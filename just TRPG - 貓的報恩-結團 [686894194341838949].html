@@ -1,0 +1,3999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>just TRPG - 貓的報恩-結團</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/6c6374bad0b0b6d204d8d6dc4a18d820.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/e8acd7d9bf6207f99350ca9f9e23b168.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/3bdef1251a424500c1b3a78dea9b7e57.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/be0060dafb7a0e31d2a1ca17c0708636.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/8e12fb4f14d9c4592eb8ec9f22337b04.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    border-radius: 3px;
+}
+
+.quote {
+    margin: 0.5em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment-thumbnail {
+    margin-top: 0.3em;
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+.mention {
+    color: #7289da;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/495551793992957962/c984650d4b9013b7083f627f6ac10c40.png" alt="Guild icon" />
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">just TRPG</div>
+        <div class="preamble__entry">貓的報恩-結團</div>
+
+            <div class="preamble__entry preamble__entry--small"></div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+    <div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="686898850493104190" id="message-686898850493104190">
+                <div class="chatlog__content">
+                    <span class="markdown">你做了一個夢，在夢中你聽到了哭聲，那聽起來像是一名少女的哭聲。只是那是不同於啜泣，幾乎可稱之為哀嚎的哭聲，讓人聯想到承受著莫大痛苦的受刑者。一邊哭泣，一邊似乎斷斷續續的在訴說些什麼。
+-----
+然後，你醒了過來。被那冰冷的雨滴敲打在在身上的觸感、以及身下地面的堅硬及冰冷，稍微一動就能感覺到那早已被雨水整個弄濕的衣服緊黏著皮膚，令你感到十分不適。
+你發現了不知為何自己躺在水泥地上，道路的兩旁皆是高聳的牆壁。路燈從牆上探身灑落昏黃的一點光明，漆黑的夜空中不斷地墮落著冰冷的雨珠。(SanCheck 1 /1d3)</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 07:44 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/337546755178496000/b38aa1e0073b26f7e49b440ea355abe1.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="夜羽#9035" data-user-id="337546755178496000">夜羽</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="686901854348902451" id="message-686901854348902451">
+                <div class="chatlog__content">
+                    <span class="markdown">//人呢<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902169634734090" id="message-686902169634734090">
+                <div class="chatlog__content">
+                    <span class="markdown">//咪(？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902230858858703" id="message-686902230858858703">
+                <div class="chatlog__content">
+                    <span class="markdown">//這個本是誰跑的？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/337546755178496000/b38aa1e0073b26f7e49b440ea355abe1.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="夜羽#9035" data-user-id="337546755178496000">夜羽</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902264782127115" id="message-686902264782127115">
+                <div class="chatlog__content">
+                    <span class="markdown">//小咪</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902299964342287" id="message-686902299964342287">
+                <div class="chatlog__content">
+                    <span class="markdown">//一開始就SC的新手本，沒問題(？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902522170048518" id="message-686902522170048518">
+                <div class="chatlog__content">
+                    <span class="markdown">//沒問題啊 <s>結局就還你了</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902558563893258" id="message-686902558563893258">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 65 SC</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">10-Mar-20 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902558719344641" id="message-686902558719344641">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="小咪(little mi)#0310">@小咪(little mi)</span>
+1D100 ≦ 65：
+68 → 失敗：SC</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902591203836001" id="message-686902591203836001">
+                <div class="chatlog__content">
+                    <span class="markdown">//笑</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902614268313661" id="message-686902614268313661">
+                <div class="chatlog__content">
+                    <span class="markdown">//蒸蚌</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686902687971016705" id="message-686902687971016705">
+                <div class="chatlog__content">
+                    <span class="markdown">1d3 san</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">10-Mar-20 07:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902688419676248" id="message-686902688419676248">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="小咪(little mi)#0310">@小咪(little mi)</span>
+1d3：san
+1[1] = 1</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902724104683614" id="message-686902724104683614">
+                <div class="chatlog__content">
+                    <span class="markdown">//嗯 沒差</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="686902725346197512" id="message-686902725346197512">
+                <div class="chatlog__content">
+                    <span class="markdown">//耶</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686903167832948745" id="message-686903167832948745">
+                <div class="chatlog__content">
+                    <span class="markdown">「<span class="spoiler">幹…他媽</span>的現在是三小情況…」從地面爬起來後拍了拍自己身上的泥沙，打算先找個地方躲雨</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="686904464300310590" id="message-686904464300310590">
+                <div class="chatlog__content">
+                    <span class="markdown">你看了看四周，覺得自己似乎是在某條巷子內，僅僅只有一條往前的單行道。而在你前面不遠處的路燈底下，有著很醒目的一把攤開在地上的淡綠色雨傘，傘面上印著白色的花朵，看起來十分清新可愛的樣子</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="686905064815591444" id="message-686905064815591444">
+                <div class="chatlog__content">
+                    <span class="markdown">「這是…？」蹲了下來，稍微看了看那把雨傘</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 07:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="686906107163312128" id="message-686906107163312128">
+                <div class="chatlog__content">
+                    <span class="markdown">你看到了那把雨傘的手柄處，被人用了馬克筆寫著&quot;Yoko&quot;的字樣。另外在雨傘的底下，有著一個褐色的紙盒板，裡面墊著棉布，紙盒上還寫著『請收養我』的字樣，不過盒子內除了那塊棉布之外，卻是空的，並沒有其它的東西。</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 08:00 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="686906675499630626" id="message-686906675499630626">
+                <div class="chatlog__content">
+                    <span class="markdown">//不拿回去，全劇終</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="686906893859684377" id="message-686906893859684377">
+                <div class="chatlog__content">
+                    <span class="markdown">「看來被人抱走了呢？」便起身打算繼續尋找躲雨處
+//<s>不要劇透ㄛ淦</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="686906981839273991" id="message-686906981839273991">
+                <div class="chatlog__content">
+                    <span class="markdown">//我沒劇透啦……我說過我幾乎沒看過coc劇本吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="686907205563187221" id="message-686907205563187221">
+                <div class="chatlog__content">
+                    <span class="markdown">// 是說如果真的沒有任何事件的話是不是就真劇終了，我還丟掉了一點san啊www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="686908088699453470" id="message-686908088699453470">
+                <div class="chatlog__content">
+                    <span class="markdown">雖然你打算繼續往前走找地方躲雨。可是由於巷子十分狹窄的關係，如果不先把那把擋在你的前方的那把雨傘移開的話，恐怕難以前進。<s>除非爬牆</s></span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 08:08 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="686908282249412648" id="message-686908282249412648">
+                <div class="chatlog__content">
+                    <span class="markdown">//(信子攀爬 大成功</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="686909180455551026" id="message-686909180455551026">
+                <div class="chatlog__content">
+                    <span class="markdown">「嗚哇，跨不過去」試著抬起腳卻卡到了紙箱
+(算了，順便幫忙回收好了，雨傘的主人應該不會介意我借一下吧)這麼想著，拿起了紙箱，撐起雨傘打算繼續前進
+
+(等等，話說這裡是哪裡？)雋才這才想起自己對躺在地上之前的事好像沒甚麼印象了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="686910711107944448" id="message-686910711107944448">
+                <div class="chatlog__content">
+                    <span class="markdown">就在你拿起了紙箱跟雨傘的時候，你發現了地上還有一樣由於剛剛視線死角而沒有看到的東西，那是一支大概只剩下半截的紅色蠟燭。
+另外，雖然你試著回想一下自己之前是在做些什麼，但卻覺得記憶有些模糊。只記得自己原本好像是打算出門買點飲料什麼的，然後接下來的部分就不太記得了。</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 08:21 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="686911675273707550" id="message-686911675273707550">
+                <div class="chatlog__content">
+                    <span class="markdown">(反正都要丟了)
+把紅蠟燭拾起放進紙箱裡面，繼續沿著路走</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="686912156649914399" id="message-686912156649914399">
+                <div class="chatlog__content">
+                    <span class="markdown">就在你把蠟燭撿起來放進紙箱後，打算繼續沿著路往前走時。聽到了從雨中傳來了細細的’喵嗚’聲。</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 08:23 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="686912625161797711" id="message-686912625161797711">
+                <div class="chatlog__content">
+                    <span class="markdown">「貓？」反射性的轉向了聲音來源
+//貓！</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="686913533061103803" id="message-686913533061103803">
+                <div class="chatlog__content">
+                    <span class="markdown">你尋著聲音的來源，很快的就發現那聲音是來自於你身旁的圍牆上方，那邊有著一隻有著藍眼睛的白貓，從身形來看十分的瘦弱纖細，看起來似乎還未成年的樣子。
+那隻白色的小貓正以蹲坐著的姿勢，用叫聲吸引你的注意。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="686913741060964356" id="message-686913741060964356">
+                <div class="chatlog__content">
+                    <span class="markdown">「…？」摸摸身上有沒有零食之類的東西
+不，準確來說是東西還在嗎</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="686914241114013733" id="message-686914241114013733">
+                <div class="chatlog__content">
+                    <span class="markdown">你摸了摸自己的身上，錢包和手機什麼的都在。不過似乎並沒有零食的樣子，你想起了原本出門的目的之一就是為了去補充已經被你吃光的零食。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="686914935355342863" id="message-686914935355342863">
+                <div class="chatlog__content">
+                    <span class="markdown">「抱歉，我沒有食物了」放下紙箱，擺出張開的手在貓貓眼前晃了晃表示自己沒有東西可以討要</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="686915500043010194" id="message-686915500043010194">
+                <div class="chatlog__content">
+                    <span class="markdown">就在你對著那隻小貓說話的時候，你看到那隻小貓站了起來，繼續對著你喵喵的叫了幾聲，然後沿著牆上往前方跑去。</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 08:43 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="686917443305865229" id="message-686917443305865229">
+                <div class="chatlog__content">
+                    <span class="markdown">//發現上面有漏了一些 所以稍微補了幾句</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="686917603641524266" id="message-686917603641524266">
+                <div class="chatlog__content">
+                    <span class="markdown">「？」試著往貓貓跑走的地方看了一下</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="686918005065908239" id="message-686918005065908239">
+                <div class="chatlog__content">
+                    <span class="markdown">在你的前方是一條看不到盡頭的道路，你並不知道那會通往什麼樣的地方。</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 08:47 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="686918149706219536" id="message-686918149706219536">
+                <div class="chatlog__content">
+                    <span class="markdown">「原來有其他地方嗎」總之順著路走了下去</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="686918986264608777" id="message-686918986264608777">
+                <div class="chatlog__content">
+                    <span class="markdown">你就這樣順著路往前走了一小段，你發現剛剛那隻跑遠的小貓就站在前方不遠處的牆上，而那隻小貓注意到了你的靠近之後，又對著你喵喵的叫了幾聲，然後繼續往前方跑去。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="686919223175544940" id="message-686919223175544940">
+                <div class="chatlog__content">
+                    <span class="markdown">(這是…在帶我嗎？)一邊注意一下身邊景物，一邊加快腳步跟上貓咪</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="686920308963278884" id="message-686920308963278884">
+                <div class="chatlog__content">
+                    <span class="markdown">就在你加快腳步想要追上貓咪的時候，你總有種好像馬上就要跟丟的感覺，不過那隻貓咪每次都會在發現你快要跟不上的時候有意的放慢腳步。就這樣在不知不覺間穿過了許許多多的岔路口。路燈一盞接著一盞維持著微弱的照明，讓你不至於因為看不清楚地面而摔跤。而在追著小貓的過程中，你似乎覺得那個背影似乎有些眼熟。</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686920348490268689" id="message-686920348490268689">
+                <div class="chatlog__content">
+                    <span class="markdown">過個靈感</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="686920907415093275" id="message-686920907415093275">
+                <div class="chatlog__content">
+                    <span class="markdown">//靈感的數值看甚麼啊(&#180;⊙ω⊙`)</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="686920955674755073" id="message-686920955674755073">
+                <div class="chatlog__content">
+                    <span class="markdown">//看智力</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 08:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="686921222633947136" id="message-686921222633947136">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 85 一個最容易瘋掉</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138">HKTRPG</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">10-Mar-20 08:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="686921222981943312" id="message-686921222981943312">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="小咪(little mi)#0310">@小咪(little mi)</span>
+1D100 ≦ 85：
+83 → 通常成功：一個最容易瘋掉</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="686921815247159334" id="message-686921815247159334">
+                <div class="chatlog__content">
+                    <span class="markdown">你想起了有時候自己深夜出門買東西的時候，偶爾會在公寓附近看到白貓的身影。感覺上跟眼前這隻貓的背影很是相似。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="686922212313530387" id="message-686922212313530387">
+                <div class="chatlog__content">
+                    <span class="markdown">「…加知？」喊了一下附近住戶對於這隻白猫的稱呼，看看他的反應
+//<span class="mention" title="改變與不變的魔女小蒼蒼#9104">@改變與不變的魔女小蒼蒼</span>加知owo？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="686922291602391056" id="message-686922291602391056">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>你在工三小</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="686922571794481223" id="message-686922571794481223">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>咪標的那個人車的某個白猫角色，他的名字叫加知</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="686922641940021263" id="message-686922641940021263">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>笑死</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686922752703070281" id="message-686922752703070281">
+                <div class="chatlog__content">
+                    <span class="markdown">那隻小貓對此並沒有任何的反應，你大概是認錯貓了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="686923114009198592" id="message-686923114009198592">
+                <div class="chatlog__content">
+                    <span class="markdown">「…」繼續跟著</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="686924158956732466" id="message-686924158956732466">
+                <div class="chatlog__content">
+                    <span class="markdown">最後，那隻貓在一個你感覺相當熟悉的岔路口停了下來，並對著你喵喵的叫了幾聲，然後跳出牆外看不到了。這條岔路是你要回公寓的路上必定會經過的地方。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="686927036048343097" id="message-686927036048343097">
+                <div class="chatlog__content">
+                    <span class="markdown">「喔喔出來了啊」沒有直接回家，而是先在路口放下紙箱，並到了警察局去報失這把雨傘</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 09:29 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930071524868126" id="message-686930071524868126">
+                <div class="chatlog__content">
+                    <span class="markdown">.........................................
+
+雖然你是如此的打算著，並憑藉著記憶打算前往警察局去。
+但是周遭的景色卻讓你感到既熟悉又陌生，隨著你往其它地方走去，周遭的景色越來越陌生。等到你察覺到了不對勁，想要回頭的時候。卻發現自己已經迷失在了不知在哪個岔路口上，找不到回去的路了。即使你想使用手機聯絡卻發現沒有任何的信號，就算想找人問路，也沒有半個人在。就這樣被困在如同迷宮一般的高牆之中。
+
+........
+.....
+...
+.
+................然後你在你自己的床上驚醒了，難道剛剛發生過的一切都只是夢而已嗎？你不禁這樣想道。
+
+Normal End ? 
+沒有通關獎勵</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/337546755178496000/b38aa1e0073b26f7e49b440ea355abe1.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="夜羽#9035" data-user-id="337546755178496000">夜羽</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930151795064897" id="message-686930151795064897">
+                <div class="chatlog__content">
+                    <span class="markdown">//真短 <img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930241838514197" id="message-686930241838514197">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>其實他亂跑應該被撕的 我硬扯了NE給他</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930242686025748" id="message-686930242686025748">
+                <div class="chatlog__content">
+                    <span class="markdown">//(&#176;▽。)</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930288743284801" id="message-686930288743284801">
+                <div class="chatlog__content">
+                    <span class="markdown">//有夠快</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930384998629440" id="message-686930384998629440">
+                <div class="chatlog__content">
+                    <span class="markdown">//到底，去警局還人家傘錯了ㄇwww</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930446801698817" id="message-686930446801698817">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>想知道劇情到底是怎樣啊</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930474542825602" id="message-686930474542825602">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930535318290472" id="message-686930535318290472">
+                <div class="chatlog__content">
+                    <span class="markdown">//八成又是哪個神太無聊</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/337546755178496000/b38aa1e0073b26f7e49b440ea355abe1.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="夜羽#9035" data-user-id="337546755178496000">夜羽</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930563369664532" id="message-686930563369664532">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>撿到一篇後日談的感覺</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930581191262221" id="message-686930581191262221">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686930624057180247" id="message-686930624057180247">
+                <div class="chatlog__content">
+                    <span class="markdown">我想想 要從哪邊開始說</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930720383434796" id="message-686930720383434796">
+                <div class="chatlog__content">
+                    <span class="markdown">//我猜回去之後原本還會有一大段www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930762066558979" id="message-686930762066558979">
+                <div class="chatlog__content">
+                    <span class="markdown">嗯 從那隻貓 跟一開始聽到的女生的哭聲好了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930813148725438" id="message-686930813148725438">
+                <div class="chatlog__content">
+                    <span class="markdown">//大概劇情過了多少？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930865619468364" id="message-686930865619468364">
+                <div class="chatlog__content">
+                    <span class="markdown">一半多吧<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930906610401352" id="message-686930906610401352">
+                <div class="chatlog__content">
+                    <span class="markdown">//居然有一半嗎www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930963191955466" id="message-686930963191955466">
+                <div class="chatlog__content">
+                    <span class="markdown">//</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686930968426184705" id="message-686930968426184705">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="686930971047886918" id="message-686930971047886918">
+                <div class="chatlog__content">
+                    <span class="markdown">劇情有一半 但是探索出來的線索幾乎完全沒有</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686930983806566615" id="message-686930983806566615">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931040622739484" id="message-686931040622739484">
+                <div class="chatlog__content">
+                    <span class="markdown">//大概要翻牆（？）</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/27a69a96fca8ff1a6a9c11df8c181a48.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465">紅色老鼠傑力</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931075250782244" id="message-686931075250782244">
+                <div class="chatlog__content">
+                    <span class="markdown">// 小咪沒有偵探的實力</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931178292641869" id="message-686931178292641869">
+                <div class="chatlog__content">
+                    <span class="markdown">總之我開始解釋劇本設定</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686931189822652469" id="message-686931189822652469">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931206407061516" id="message-686931206407061516">
+                <div class="chatlog__content">
+                    <span class="markdown">//正在思考到底要不要老實撕掉(？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/337546755178496000/b38aa1e0073b26f7e49b440ea355abe1.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="夜羽#9035" data-user-id="337546755178496000">夜羽</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931269682331704" id="message-686931269682331704">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>沒感情</s></span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 09:39 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931635232440501" id="message-686931635232440501">
+                <div class="chatlog__content">
+                    <span class="markdown">你那間公寓20年前發生過火災 
+起因是當時的一個女高中生不慎所導致的
+然後被燒死之後就這樣成了怨靈<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931730271043620" id="message-686931730271043620">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>雖然我是馬戲團成員，但我感覺我探索度一定比小咪高</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931818557210642" id="message-686931818557210642">
+                <div class="chatlog__content">
+                    <span class="markdown">//人設太普通而導致動機不足</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="686931912786444345" id="message-686931912786444345">
+                <div class="chatlog__content">
+                    <span class="markdown">然後那個女高中生.... 呃 日本人 全名增田洋子(Yoko) 也就是那把傘的主人</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="686932205486080011" id="message-686932205486080011">
+                <div class="chatlog__content">
+                    <span class="markdown">//喔喔，我是不是不該放下箱子</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="686932276142932044" id="message-686932276142932044">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686932335287205928" id="message-686932335287205928">
+                <div class="chatlog__content">
+                    <span class="markdown">紙箱不重要 那個不帶走都沒差</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686932360888975409" id="message-686932360888975409">
+                <div class="chatlog__content">
+                    <span class="markdown">雨傘比較重要一點</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686932399149547530" id="message-686932399149547530">
+                <div class="chatlog__content">
+                    <span class="markdown">還有那個蠟燭</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="686932508277080105" id="message-686932508277080105">
+                <div class="chatlog__content">
+                    <span class="markdown">還以為也是重要道具www隱形小貓之類的(？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="686932620336300050" id="message-686932620336300050">
+                <div class="chatlog__content">
+                    <span class="markdown">總之</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686932643643654144" id="message-686932643643654144">
+                <div class="chatlog__content">
+                    <span class="markdown">我繼續講</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="686932700581462030" id="message-686932700581462030">
+                <div class="chatlog__content">
+                    <span class="markdown">OwOb</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="686932889379536925" id="message-686932889379536925">
+                <div class="chatlog__content">
+                    <span class="markdown">洋子因為沒有意識到自己已經被燒死了 所以就這樣變成地缚靈在那邊哭<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686932946841501718" id="message-686932946841501718">
+                <div class="chatlog__content">
+                    <span class="markdown">就是你開場聽到的哭聲</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933216862666863" id="message-686933216862666863">
+                <div class="chatlog__content">
+                    <span class="markdown">然後那隻小貓是在當年曾經被洋子照顧過的小貓 是為了讓他成佛(?)才會出現</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933231270101012" id="message-686933231270101012">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933267944964166" id="message-686933267944964166">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>當然已經死了</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933330716786725" id="message-686933330716786725">
+                <div class="chatlog__content">
+                    <span class="markdown">如果你有RP要仔細觀察那隻貓的話 會讓你過偵查</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933390980677708" id="message-686933390980677708">
+                <div class="chatlog__content">
+                    <span class="markdown">然後過了會發現小貓是呈現半透明的感覺</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933410517876744" id="message-686933410517876744">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933487885746195" id="message-686933487885746195">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686933594329186377" id="message-686933594329186377">
+                <div class="chatlog__content">
+                    <span class="markdown">其它的 我想想從開場開始講好了 來說說你錯過了哪些線索</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="686933603799531592" id="message-686933603799531592">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>哪個正常人會注意那麼多</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="686933730702786565" id="message-686933730702786565">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>小咪不是應該蹲下和貓玩嗎？順便觀察</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="686933871597584454" id="message-686933871597584454">
+                <div class="chatlog__content">
+                    <span class="markdown">有一大堆想做的事情礙於人設不能做
+不拿回去的時候我還以為真的要直接BE了www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="686933960118239254" id="message-686933960118239254">
+                <div class="chatlog__content">
+                    <span class="markdown">一開始開場如果打算仔細看看周遭環境的話 過偵查會聞到空氣中有一股淡淡燒焦味</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686934049117175866" id="message-686934049117175866">
+                <div class="chatlog__content">
+                    <span class="markdown">去看路燈的話 會得到路燈非常老舊 而且跟現代的路燈種類不一樣的提示</span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 09:51 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686934351216115857" id="message-686934351216115857">
+                <div class="chatlog__content">
+                    <span class="markdown">然後如果爬牆上去的話 會發現牆外的空間是一片漆黑 什麼都沒有</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686934397026697264" id="message-686934397026697264">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>跳下去就撕卡了</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="686934501577850964" id="message-686934501577850964">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="Untitled3" title="Untitled3" src="https://cdn.discordapp.com/emojis/586182329299632128.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="686934616392859771" id="message-686934616392859771">
+                <div class="chatlog__content">
+                    <span class="markdown">然後嘛 我想想</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686934668830179390" id="message-686934668830179390">
+                <div class="chatlog__content">
+                    <span class="markdown">中間的部分應該就那樣 我能給的幾乎都給了</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686934944924303418" id="message-686934944924303418">
+                <div class="chatlog__content">
+                    <span class="markdown">再來就是那個熟悉的岔路 去那隻貓跳離開的牆那附近看的話 可以找到一盒火柴</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="686934957259882530" id="message-686934957259882530">
+                <div class="chatlog__content">
+                    <span class="markdown">//是個人都會想偵查=.=</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="686934957871988829" id="message-686934957871988829">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686934991678210059" id="message-686934991678210059">
+                <div class="chatlog__content">
+                    <span class="markdown">....</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686935020333563984" id="message-686935020333563984">
+                <div class="chatlog__content">
+                    <span class="markdown">然後就是他沒跑到的部分了</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686935257144229911" id="message-686935257144229911">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686935464917467144" id="message-686935464917467144">
+                <div class="chatlog__content">
+                    <span class="markdown">總之 他繼續往回家的路上走的話 就會聞到很重的焦味</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686935587885809692" id="message-686935587885809692">
+                <div class="chatlog__content">
+                    <span class="markdown">然後在快到家的半路上可以看到一個被放置的燭臺</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686935695712845834" id="message-686935695712845834">
+                <div class="chatlog__content">
+                    <span class="markdown">那隻貓會坐在燭臺旁的牆上等PC</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="686935748569595916" id="message-686935748569595916">
+                <div class="chatlog__content">
+                    <span class="markdown">//什麼地方<span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@八尋 寧寧（小龍蝦萌新）</span></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="686935815242121278" id="message-686935815242121278">
+                <div class="chatlog__content">
+                    <span class="markdown">.......之後</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686935870527373336" id="message-686935870527373336">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>點燃燭台過後就是幽靈出現了 然後被SC</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936007655817229" id="message-686936007655817229">
+                <div class="chatlog__content">
+                    <span class="markdown">//隨意離開為什麼會be，幽靈還是什麼的關係？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936084869021706" id="message-686936084869021706">
+                <div class="chatlog__content">
+                    <span class="markdown">//看到有東C過來都會想偵查啊</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936111791996933" id="message-686936111791996933">
+                <div class="chatlog__content">
+                    <span class="markdown">喔 因為不是現實空間<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936160865353757" id="message-686936160865353757">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936218621181953" id="message-686936218621181953">
+                <div class="chatlog__content">
+                    <span class="markdown">//<span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@八尋 寧寧（小龍蝦萌新）</span>等等，什麼東西</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936298984177732" id="message-686936298984177732">
+                <div class="chatlog__content">
+                    <span class="markdown"><div class="pre pre--multiline nohighlight">模组背景
+本模组背景为现代日本。
+调查员居住的这座公寓在二十年前曾被烧毁过一次，原因是名叫增田洋子的年轻女孩在家里点燃了蜡烛，
+不知为何似乎引燃了什么东西导致失控，最后火焰将整栋公寓吞噬。不幸中的万幸，当时的死者只有增田
+洋子一人。
+真相是洋子偶然在图书馆找到的古书上记载着一条咒语，可以不借由现代通讯手段与他人通话。好奇的洋
+子约定与同学分别在自己家点燃蜡烛共同念诵咒文，但由于操作失误，引发了不详的火灾。因此而死的少
+女，不知是完全没意识到这一点，或是不愿接受事实。
+属于少女的、不自觉想要解脱的愿望，力量日复一日逐渐增强起来。终于，将调查员带入少女构筑出的幻
+境。
+那是二十年前，一个永远下着雨的夜晚，洋子在那里徘徊。</div></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936310224519169" id="message-686936310224519169">
+                <div class="chatlog__content">
+                    <span class="markdown">//箱子 貓 跟著貓走過的路徑等</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936454403719191" id="message-686936454403719191">
+                <div class="chatlog__content">
+                    <span class="markdown">// <span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@八尋 寧寧（小龍蝦萌新）</span><s>你在日常生活中看到一隻貓會開始打量牠的身體狀況的意思嗎</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936548188356682" id="message-686936548188356682">
+                <div class="chatlog__content">
+                    <span class="markdown">//會欸，這昰COC</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/337546755178496000/b38aa1e0073b26f7e49b440ea355abe1.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="夜羽#9035" data-user-id="337546755178496000">夜羽</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936574231052292" id="message-686936574231052292">
+                <div class="chatlog__content">
+                    <span class="markdown">//仔細看跟身體狀況不一樣</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/914f09d0cb8361c0bdab633590b8e8b5.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060">刻爾洛斯</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936601322192906" id="message-686936601322192906">
+                <div class="chatlog__content">
+                    <span class="markdown">//嗯，會</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936810382819397" id="message-686936810382819397">
+                <div class="chatlog__content">
+                    <span class="markdown">總之 洋子現身之後 就是一大段的RP 然後學法術 結局</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686936826614906970" id="message-686936826614906970">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686936843668946949" id="message-686936843668946949">
+                <div class="chatlog__content">
+                    <span class="markdown">大概這樣</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936851432472589" id="message-686936851432472589">
+                <div class="chatlog__content">
+                    <span class="markdown">//我看到貓貓就是好可愛然後走掉欸，我很奇怪嗎www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936877982679076" id="message-686936877982679076">
+                <div class="chatlog__content">
+                    <span class="markdown">學法術<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="686936948421558370" id="message-686936948421558370">
+                <div class="chatlog__content">
+                    <span class="markdown">//居然還送魔法嗎www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937031519109163" id="message-686937031519109163">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>你看一下我貼的模組背景啊</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937065224405008" id="message-686937065224405008">
+                <div class="chatlog__content">
+                    <span class="markdown">我還以為小咪是那種看到貓咪會湊上去逗弄的那種人</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937259605622887" id="message-686937259605622887">
+                <div class="chatlog__content">
+                    <span class="markdown">會啊
+不過當時的情況應該是躲雨先吧www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937370334986270" id="message-686937370334986270">
+                <div class="chatlog__content">
+                    <span class="markdown">眼前的雨傘表示 :</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937433606324239" id="message-686937433606324239">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>跑coc要把一些常識放棄</s>（？）</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937537184661624" id="message-686937537184661624">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>你一開始就身在非常識的地方 要有這個觀念</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937701571756097" id="message-686937701571756097">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>但是PC不會知道啊(淦不是</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937886016536596" id="message-686937886016536596">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>欸 不是啊 開場發現自己不知道在什麼鬼地方醒來多少都要有點警覺啊</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="686937969181065364" id="message-686937969181065364">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>都在路邊醒來了</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/bae1d3481519b891678020077117692b.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760">天藍雪球</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938000583950344" id="message-686938000583950344">
+                <div class="chatlog__content">
+                    <span class="markdown">//<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /> 喔！燭光通訊術</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716">八尋 寧寧（小龍蝦萌新）</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938121366929425" id="message-686938121366929425">
+                <div class="chatlog__content">
+                    <span class="markdown">//淦 都知道自己不知道在哪裡醒來了，還在小巷子裡=.=</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938298056179719" id="message-686938298056179719">
+                <div class="chatlog__content">
+                    <span class="markdown">//對 小法術</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686938315391500423" id="message-686938315391500423">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938356113866752" id="message-686938356113866752">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>連續看到三個可達鴨頭像發話還以為有人精分</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938368558497848" id="message-686938368558497848">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>在手機不能用的劇本很方便</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938406257033262" id="message-686938406257033262">
+                <div class="chatlog__content">
+                    <span class="markdown">//喝醉了什麼的吧
+
+//對喔當時應該打電話(？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938574184120349" id="message-686938574184120349">
+                <div class="chatlog__content">
+                    <span class="markdown">嗯 拿出手機也會發現沒信號 <s>畢竟異空間</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="686938928153886746" id="message-686938928153886746">
+                <div class="chatlog__content">
+                    <span class="markdown">是說我常暗也是用雋才
+<s>我彷彿已經看到角色卡飄散的紙屑了</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686939022559412257" id="message-686939022559412257">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>等等明明沒有紙啊</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939143053508744" id="message-686939143053508744">
+                <div class="chatlog__content">
+                    <span class="markdown">常暗是不撕卡本啦 <s>就是多掉點san而已</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686939196602056765" id="message-686939196602056765">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>喔 還會額外多個消不掉的傷疤</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939232027279361" id="message-686939232027279361">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686939265787363368" id="message-686939265787363368">
+                <div class="chatlog__content">
+                    <span class="markdown">有這個？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939276125929525" id="message-686939276125929525">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>如果具體會超過64那也差不多了</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939283420086314" id="message-686939283420086314">
+                <div class="chatlog__content">
+                    <span class="markdown">有啊</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686939300461543471" id="message-686939300461543471">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686939317054210074" id="message-686939317054210074">
+                <div class="chatlog__content">
+                    <span class="markdown">我記得我有打</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939397991563347" id="message-686939397991563347">
+                <div class="chatlog__content">
+                    <span class="markdown">我們有觸發嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939585262911505" id="message-686939585262911505">
+                <div class="chatlog__content">
+                    <span class="markdown">BE就會觸發<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" />  雖然我不太記得我當初是用怎麼樣的語句來形容了</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686939628166447135" id="message-686939628166447135">
+                <div class="chatlog__content">
+                    <span class="markdown">我找一下劇本原文</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939731996573697" id="message-686939731996573697">
+                <div class="chatlog__content">
+                    <span class="markdown">我跟刻的角卡上好像都沒傷疤（？）</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="686939848246165533" id="message-686939848246165533">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686940055289331771" id="message-686940055289331771">
+                <div class="chatlog__content">
+                    <span class="markdown">等等 好像沒有 <s>那就算了吧</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686940348999532603" id="message-686940348999532603">
+                <div class="chatlog__content">
+                    <span class="markdown">喔</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686941043417284608" id="message-686941043417284608">
+                <div class="chatlog__content">
+                    <span class="markdown">思考 重新拿出來看 還真沒有疤 <s>那我當初到底是把疤給哪個劇本了 毒湯嗎</s></span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 10:18 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="686941130751082788" id="message-686941130751082788">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686941275332542482" id="message-686941275332542482">
+                <div class="chatlog__content">
+                    <span class="markdown">天曉得，毒湯紀錄沒了，唯一be的偵探也放棄了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="686941329682333763" id="message-686941329682333763">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>嗯 應該是毒湯 你那個被咬掉半個身體的 讓你身上留疤了</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686941365728575530" id="message-686941365728575530">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="686941471986679809" id="message-686941471986679809">
+                <div class="chatlog__content">
+                    <span class="markdown">被哪隻咬掉半個身體<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 10:20 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="686941556514619433" id="message-686941556514619433">
+                <div class="chatlog__content">
+                    <span class="markdown">就裡面的神話生物</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="686942344204779528" id="message-686942344204779528">
+                <div class="chatlog__content">
+                    <span class="markdown">時間到出現那個還是在房間裡那個<img class="emoji " alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 10:23 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/25c4153e07ca101d82c935e25dd768c7.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709">燈火</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="686942415378317359" id="message-686942415378317359">
+                <div class="chatlog__content">
+                    <span class="markdown">房間</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="686942452833320978" id="message-686942452833320978">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/222689220068638720/fb1bc2ec6fae5db0130b99abb9453416.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="百幻#4779" data-user-id="222689220068638720">百幻</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="686943064237015262" id="message-686943064237015262">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>我也好想有一個貓娘到我家來報恩織羽衣啊</s></span>
+
+                        <span class="chatlog__edited-timestamp" title="10-Mar-20 10:26 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/bae1d3481519b891678020077117692b.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760">天藍雪球</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="686943265907277949" id="message-686943265907277949">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>雖然沒有貓娘，但有修格斯娘你要不要</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/548844486889832449/ad0a29700c94e73b719fadb24fdfd528.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="小咪(little mi)#0310" data-user-id="548844486889832449">小咪(little mi)</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="686943380252655629" id="message-686943380252655629">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>阿斯</s>(尛</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/317035207628685312/15e81badfb786cfc7702b0856f2b5131.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="阿民#4822" data-user-id="317035207628685312">阿民</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="686943695710453932" id="message-686943695710453932">
+                <div class="chatlog__content">
+                    <span class="markdown">總之</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686943740136521823" id="message-686943740136521823">
+                <div class="chatlog__content">
+                    <span class="markdown"><s>雖然沒獎勵還是讓你過個後日談吧</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="686943770125926474" id="message-686943770125926474">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="🤔" title="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/222689220068638720/fb1bc2ec6fae5db0130b99abb9453416.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="百幻#4779" data-user-id="222689220068638720">百幻</span>
+
+
+        <span class="chatlog__timestamp">10-Mar-20 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="686944645686624262" id="message-686944645686624262">
+                <div class="chatlog__content">
+                    <span class="markdown">像這樣嗎<img class="emoji " alt="3_" title="3_" src="https://cdn.discordapp.com/emojis/586182325788737557.png" /></span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/686894194341838949/686944645346754622/5edde6b9ba0f5805.JPG">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/686894194341838949/686944645346754622/5edde6b9ba0f5805.JPG" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div>
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 196 message(s)</div>
+</div>
+
+</body>
+</html>
