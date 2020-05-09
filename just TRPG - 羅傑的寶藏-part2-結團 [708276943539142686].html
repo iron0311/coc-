@@ -1,0 +1,4447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>just TRPG - 羅傑的寶藏-part2-結團</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/6c6374bad0b0b6d204d8d6dc4a18d820.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/e8acd7d9bf6207f99350ca9f9e23b168.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/3bdef1251a424500c1b3a78dea9b7e57.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/be0060dafb7a0e31d2a1ca17c0708636.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/8e12fb4f14d9c4592eb8ec9f22337b04.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    border-radius: 3px;
+}
+
+.quote {
+    margin: 0.5em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment-thumbnail {
+    margin-top: 0.3em;
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/495551793992957962/c984650d4b9013b7083f627f6ac10c40.png" alt="Guild icon" />
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">just TRPG</div>
+        <div class="preamble__entry">羅傑的寶藏-part2-結團</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+    <div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277127702642719" id="message-708277127702642719">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277159470563433" id="message-708277159470563433">
+                <div class="chatlog__content">
+                    <span class="markdown">//到</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/c9946306a8d8740cb91b75ad764b39b9.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709" style="color: #E74C3C">燈火（躺椅）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277237769699338" id="message-708277237769699338">
+                <div class="chatlog__content">
+                    <span class="markdown">//不隱藏嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277246451908660" id="message-708277246451908660">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>既然人在那乾脆直接開始吧</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708277308745711649" id="message-708277308745711649">
+                <div class="chatlog__content">
+                    <span class="markdown">//沒關係，part1跑完了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277373493313616" id="message-708277373493313616">
+                <div class="chatlog__content">
+                    <span class="markdown">//應該可以直接開始<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/507870102415474709/c9946306a8d8740cb91b75ad764b39b9.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="燈火#8396" data-user-id="507870102415474709" style="color: #E74C3C">燈火（躺椅）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277404899999795" id="message-708277404899999795">
+                <div class="chatlog__content">
+                    <span class="markdown">//百幻想跑part.3</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277515873026078" id="message-708277515873026078">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>我相信他的自制力</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277750510649415" id="message-708277750510649415">
+                <div class="chatlog__content">
+                    <span class="markdown">//不那只是我懶得爬文</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277807318433812" id="message-708277807318433812">
+                <div class="chatlog__content">
+                    <span class="markdown">某天，
+那個蒐羅了世界上巨量財寶的大盜，
+羅傑在嗝屁前，
+向全世界說了這麼一句話…
+
+「想要我的財寶嗎？去找吧！
+我把它們全部藏在那裡了！」
+
+聽到這個之後，
+你就循著地圖找到了
+他藏著財寶的其中一座小島，
+並成功的進入其中，
+而你當你從右下角的門進去後，
+一眼望去，你看到了這些東西</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708277806836088832/20200508_005412.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708277806836088832/20200508_005412.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277884485369877" id="message-708277884485369877">
+                <div class="chatlog__content">
+                    <span class="markdown">//我操..真面熟的遊戲場景</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="708277944644272229" id="message-708277944644272229">
+                <div class="chatlog__content">
+                    <span class="markdown">//說你要翻啥，我就給那個的資訊<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="708278134394454057" id="message-708278134394454057">
+                <div class="chatlog__content">
+                    <span class="markdown">翻保險箱吧...//話說我好像沒說用誰跑對不對...</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="708278208180518924" id="message-708278208180518924">
+                <div class="chatlog__content">
+                    <span class="markdown">//基本上沒判定，所以沒差</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="708278273829765120" id="message-708278273829765120">
+                <div class="chatlog__content">
+                    <span class="markdown">//好 知道了 那我自己默認婕瑜吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="708278370303082517" id="message-708278370303082517">
+                <div class="chatlog__content">
+                    <span class="markdown">這是一個合金製的保險箱，
+上面有密碼鎖</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708278370198224916/Screenshot_20200508-005808_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708278370198224916/Screenshot_20200508-005808_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="708278551262265405" id="message-708278551262265405">
+                <div class="chatlog__content">
+                    <span class="markdown">有密碼鎖啊...去翻翻看書櫃好了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:27 PM</span>
+
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="708278822016909403" id="message-708278822016909403">
+                <div class="chatlog__content">
+                    <span class="markdown">你從這個長滿蜘蛛絲，
+而且還積了一層灰的書櫃中，
+找到了下面兩本書，外加一張破舊的紙條</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708278820964139058/Screenshot_20200508-005626_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708278820964139058/Screenshot_20200508-005626_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708278821412929636/Screenshot_20200508-005606_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708278821412929636/Screenshot_20200508-005606_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708278821656330272/Screenshot_20200508-005657_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708278821656330272/Screenshot_20200508-005657_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="708279117040320563" id="message-708279117040320563">
+                <div class="chatlog__content">
+                    <span class="markdown">再看看旁邊的營火<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="708279163945222245" id="message-708279163945222245">
+                <div class="chatlog__content">
+                    <span class="markdown"></span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708279163856879616/Screenshot_20200508-005747_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708279163856879616/Screenshot_20200508-005747_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708279214020886628" id="message-708279214020886628">
+                <div class="chatlog__content">
+                    <span class="markdown">你看到這是一個熄滅的篝火堆</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="708279509929033809" id="message-708279509929033809">
+                <div class="chatlog__content">
+                    <span class="markdown">再走過去看了看鐵鉆(為甚麼我找不到繁體orz</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="708279678934188062" id="message-708279678934188062">
+                <div class="chatlog__content">
+                    <span class="markdown">這是一個老舊的鐵砧，
+上面還附有鐵鍬的製作說明</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708279678384996403/Screenshot_20200508-005730_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708279678384996403/Screenshot_20200508-005730_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="708279820647137292" id="message-708279820647137292">
+                <div class="chatlog__content">
+                    <span class="markdown">仔細看看梯子下面有甚麼東西</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="708279905627930645" id="message-708279905627930645">
+                <div class="chatlog__content">
+                    <span class="markdown">梯子下面是一個地窖的樣子</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708279905137197086/Screenshot_20200508-010035_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708279905137197086/Screenshot_20200508-010035_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="708279960741085265" id="message-708279960741085265">
+                <div class="chatlog__content">
+                    <span class="markdown">進去看看好了<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="708280067331194960" id="message-708280067331194960">
+                <div class="chatlog__content">
+                    <span class="markdown">你進到了地窖中，
+在地窖的中央有一個儲物箱</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708280067087794186/Screenshot_20200508-010104_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708280067087794186/Screenshot_20200508-010104_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="708280161375748177" id="message-708280161375748177">
+                <div class="chatlog__content">
+                    <span class="markdown">觀察儲物箱有沒有鎖</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="708280172205309973" id="message-708280172205309973">
+                <div class="chatlog__content">
+                    <span class="markdown"></span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708280172138463282/Screenshot_20200508-010124_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708280172138463282/Screenshot_20200508-010124_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708280222528569396" id="message-708280222528569396">
+                <div class="chatlog__content">
+                    <span class="markdown">看來沒有鎖</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="708280253528801310" id="message-708280253528801310">
+                <div class="chatlog__content">
+                    <span class="markdown">那打開看看吧<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="708280324957798482" id="message-708280324957798482">
+                <div class="chatlog__content">
+                    <span class="markdown">你從裡面拿到了一顆打火石</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708280324924113068/Screenshot_20200508-010145_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708280324924113068/Screenshot_20200508-010145_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="708280684749389835" id="message-708280684749389835">
+                <div class="chatlog__content">
+                    <span class="markdown">拿起打火石後到中間的...那是祭壇嗎(?)看看</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="708280826063749141" id="message-708280826063749141">
+                <div class="chatlog__content">
+                    <span class="markdown">你看到這是一個古老的祭壇，
+上面還有三個插槽能插東西上去</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708280825979994112/Screenshot_20200508-014129_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708280825979994112/Screenshot_20200508-014129_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="708281204520124466" id="message-708281204520124466">
+                <div class="chatlog__content">
+                    <span class="markdown">篝火的木材是可以拿起來的嗎?</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="708281369519849613" id="message-708281369519849613">
+                <div class="chatlog__content">
+                    <span class="markdown">你拿著打火石靠近了篝火，
+你覺得這個應該是用在這邊的</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708281369180241981/Screenshot_20200508-010241_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708281369180241981/Screenshot_20200508-010241_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="708281469402873906" id="message-708281469402873906">
+                <div class="chatlog__content">
+                    <span class="markdown">先翻找看看裡面有甚麼吧<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /> 不小心燒掉了就不好了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="708281604136501298" id="message-708281604136501298">
+                <div class="chatlog__content">
+                    <span class="markdown">你找到了三根雖然有點燒焦痕跡，
+但是還是十分結實的木材</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="708281843329531934" id="message-708281843329531934">
+                <div class="chatlog__content">
+                    <span class="markdown">我可以拿起其中一根嗎<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="708281916855681024" id="message-708281916855681024">
+                <div class="chatlog__content">
+                    <span class="markdown">三根你都拿走了，還剩下篝火本體</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="708281970311954502" id="message-708281970311954502">
+                <div class="chatlog__content">
+                    <span class="markdown">//這樣燒得起來嗎<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 07:40 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="708282028935610368" id="message-708282028935610368">
+                <div class="chatlog__content">
+                    <span class="markdown">//燒的起來啊</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708282105385320499" id="message-708282105385320499">
+                <div class="chatlog__content">
+                    <span class="markdown">//你看圖啊，上面有六根吶</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="708282159022211072" id="message-708282159022211072">
+                <div class="chatlog__content">
+                    <span class="markdown">//噗 我以為是三根長的</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708282299388526653" id="message-708282299388526653">
+                <div class="chatlog__content">
+                    <span class="markdown">拿走三根木材到鐵鉆前面後再用打火石點燃篝火</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 07:41 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="708282405462736957" id="message-708282405462736957">
+                <div class="chatlog__content">
+                    <span class="markdown">你點燃篝火了，現在他燒的正旺</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708282405269667840/Screenshot_20200508-010322_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708282405269667840/Screenshot_20200508-010322_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708282556818260000" id="message-708282556818260000">
+                <div class="chatlog__content">
+                    <span class="markdown">你來到了鐵砧旁，不過似乎還缺鐵塊的樣子</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708282556952608808/Screenshot_20200508-005730_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708282556952608808/Screenshot_20200508-005730_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="708282558672142397" id="message-708282558672142397">
+                <div class="chatlog__content">
+                    <span class="markdown">到旁邊的四個礦石看看有沒有鐵塊吧<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="708282789425971261" id="message-708282789425971261">
+                <div class="chatlog__content">
+                    <span class="markdown">你來到了四個元素礦脈旁邊，
+要挖上面的水晶似乎需要鐵鍬</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708282788360486942/Screenshot_20200508-005839_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708282788360486942/Screenshot_20200508-005839_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708282788897619998/Screenshot_20200508-005859_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708282788897619998/Screenshot_20200508-005859_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708282789317050408/Screenshot_20200508-005918_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708282789317050408/Screenshot_20200508-005918_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708282789631492206/Screenshot_20200508-005945_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708282789631492206/Screenshot_20200508-005945_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="708283206490652673" id="message-708283206490652673">
+                <div class="chatlog__content">
+                    <span class="markdown">去保險箱輸入1653</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="708283403916673046" id="message-708283403916673046">
+                <div class="chatlog__content">
+                    <span class="markdown">保險箱沒有反應，似乎輸入的密碼錯誤</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 07:45 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708283510959374356" id="message-708283510959374356">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>刻這邊是一次就打開了，花不到30秒</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708283583520964638" id="message-708283583520964638">
+                <div class="chatlog__content">
+                    <span class="markdown">Pinned a message.</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="708283590525321269" id="message-708283590525321269">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>我得想想保險箱密碼了</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="708283636511932417" id="message-708283636511932417">
+                <div class="chatlog__content">
+                    <span class="markdown">//幫你釘選書了，方便查閱</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="708283708280668260" id="message-708283708280668260">
+                <div class="chatlog__content">
+                    <span class="markdown">順帶一提，這是現在的地圖</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708283707915763752/Screenshot_20200508-014605_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708283707915763752/Screenshot_20200508-014605_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708283864430280714" id="message-708283864430280714">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>為什麼你們都卡在同一個地方呢</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284065715060827" id="message-708284065715060827">
+                <div class="chatlog__content">
+                    <span class="markdown">輸入4545好了<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284231587070024" id="message-708284231587070024">
+                <div class="chatlog__content">
+                    <span class="markdown">你發現，一個數字只能按一次，
+這是台鐵常用的那種舊式密碼鎖</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284269604110378" id="message-708284269604110378">
+                <div class="chatlog__content">
+                    <span class="markdown">//摁...了解</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284541688872970" id="message-708284541688872970">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>慘了，你會不會卡的比刻還久</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284616284569670" id="message-708284616284569670">
+                <div class="chatlog__content">
+                    <span class="markdown">//應該會，解密碼我常卡</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284774866878554" id="message-708284774866878554">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>這密碼明明超簡單的，話說既然卡的話，
+你不如先想想鐵塊在哪吧</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284847604629606" id="message-708284847604629606">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>诶...我就是以為鐵塊在保險箱裡</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="708284909994901524" id="message-708284909994901524">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>保險箱裡的東西你現在用不到</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="708285060578672780" id="message-708285060578672780">
+                <div class="chatlog__content">
+                    <span class="markdown">去右下角的門那邊看看有沒有鐵塊好了<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="708285196541231167" id="message-708285196541231167">
+                <div class="chatlog__content">
+                    <span class="markdown">那個就是你進來時的門，
+從門縫望出去，
+無人海島的空氣十分清新</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708285575295402274" id="message-708285575295402274">
+                <div class="chatlog__content">
+                    <span class="markdown">Pinned a message.</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708285605418631261" id="message-708285605418631261">
+                <div class="chatlog__content">
+                    <span class="markdown">//幫你釘選地圖</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="708285697798438972" id="message-708285697798438972">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>思考還有哪裡沒去過.jpg</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="708285789582131242" id="message-708285789582131242">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>你不如思考有沒有看漏了什麼</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708285929021767684" id="message-708285929021767684">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>刻就是看漏了什麼才卡了半小時</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708286419688357960" id="message-708286419688357960">
+                <div class="chatlog__content">
+                    <span class="markdown">//好，超過30分鐘了，給你一個靈感檢定吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 07:58 PM</span>
+
+            <div class="chatlog__message " data-message-id="708286794529112187" id="message-708286794529112187">
+                <div class="chatlog__content">
+                    <span class="markdown">//話說...那五格破碎的地板可以觀察嗎?</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287317151973417" id="message-708287317151973417">
+                <div class="chatlog__content">
+                    <span class="markdown">你發現那就是個破碎的地板，
+另外，當你太靠近那四個保險時，
+站在中央的那個鐵傀儡剽悍的對你兇了起來，
+似乎不喜歡你靠近那邊
+
+被突然動起來的鐵傀儡嚇到
+(San Check 0/1d3)</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708287316711440485/Screenshot_20200508-010010_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708287316711440485/Screenshot_20200508-010010_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287434160341052" id="message-708287434160341052">
+                <div class="chatlog__content">
+                    <span class="markdown">//等等...我去找婕瑜的san值</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708287461062737941" id="message-708287461062737941">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 70 sc</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287461503139891" id="message-708287461503139891">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+1D100 ≦ 70：
+76 → 失敗：sc</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287470512373862" id="message-708287470512373862">
+                <div class="chatlog__content">
+                    <span class="markdown">1d3</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287471267479613" id="message-708287471267479613">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+1d3：
+1[1] = 1</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287574111944774" id="message-708287574111944774">
+                <div class="chatlog__content">
+                    <span class="markdown">順帶一提，這是鐵傀儡的數值</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708287573860024360/Screenshot_20200508-015652_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708287573860024360/Screenshot_20200508-015652_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287669301673986" id="message-708287669301673986">
+                <div class="chatlog__content">
+                    <span class="markdown">//嘖...我還是過個靈感吧orz</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287702134554666" id="message-708287702134554666">
+                <div class="chatlog__content">
+                    <span class="markdown">//骰吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287707788345344" id="message-708287707788345344">
+                <div class="chatlog__content">
+                    <span class="markdown">//想不到鐵塊的位置</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708287725970915411" id="message-708287725970915411">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 60 靈感</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287726465712159" id="message-708287726465712159">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+1D100 ≦ 60：
+85 → 失敗：靈感</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287743263899698" id="message-708287743263899698">
+                <div class="chatlog__content">
+                    <span class="markdown">//...</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="708287861505654815" id="message-708287861505654815">
+                <div class="chatlog__content">
+                    <span class="markdown">你只覺得感覺很像有甚麼東西能拿，
+但卻想不太起來是什麼</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288019848888340" id="message-708288019848888340">
+                <div class="chatlog__content">
+                    <span class="markdown">//儲物箱可以搬到上面來嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288233422848001" id="message-708288233422848001">
+                <div class="chatlog__content">
+                    <span class="markdown">當你回到地窖之後，
+你發現儲物箱憑空消失了，
+被這畫面嚇到的你
+(San Check 1/1d3)</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708288233309470790/Screenshot_20200508-015157_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708288233309470790/Screenshot_20200508-015157_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288265337307228" id="message-708288265337307228">
+                <div class="chatlog__content">
+                    <span class="markdown">//操XDD</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708288284899672095" id="message-708288284899672095">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 69 sc</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288285302063114" id="message-708288285302063114">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+1D100 ≦ 69：
+30 → 困難成功：sc</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288481578713129" id="message-708288481578713129">
+                <div class="chatlog__content">
+                    <span class="markdown">同時，你覺得地窖怪陰森的，
+讓你不想在沒光源的地方多待太久</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:05 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288519898136576" id="message-708288519898136576">
+                <div class="chatlog__content">
+                    <span class="markdown">回到樓上好了...</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708288552353660968" id="message-708288552353660968">
+                <div class="chatlog__content">
+                    <span class="markdown">//篝火熄滅了嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288667822718976" id="message-708288667822718976">
+                <div class="chatlog__content">
+                    <span class="markdown">篝火燒得正旺，似乎很難熄滅</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708288667638038528/Screenshot_20200508-010322_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708288667638038528/Screenshot_20200508-010322_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288819316654170" id="message-708288819316654170">
+                <div class="chatlog__content">
+                    <span class="markdown">//打火石可以當作鐵塊嗎(思考</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="708288906659102800" id="message-708288906659102800">
+                <div class="chatlog__content">
+                    <span class="markdown">打火石就是普通的石頭材質，
+很明顯不是鐵塊</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708289014863757404" id="message-708289014863757404">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>你太慘了，刻的話，剛才就已經發現我給的提示了</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="708289094370852937" id="message-708289094370852937">
+                <div class="chatlog__content">
+                    <span class="markdown">//祭壇上有甚麼東西嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="708289170401132566" id="message-708289170401132566">
+                <div class="chatlog__content">
+                    <span class="markdown">祭壇還是老樣子</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708289170082365490/Screenshot_20200508-014129_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708289170082365490/Screenshot_20200508-014129_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="708289417349169212" id="message-708289417349169212">
+                <div class="chatlog__content">
+                    <span class="markdown">//鐵鉆附近有鐵塊嗎...?</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="708289517513343010" id="message-708289517513343010">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>沒有，想太多</s></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708289566368464928" id="message-708289566368464928">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>你太慘了</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="708289625180995687" id="message-708289625180995687">
+                <div class="chatlog__content">
+                    <span class="markdown">//靠...我真的想不到鐵塊在哪XDD</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="708289779590234153" id="message-708289779590234153">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>這明明是很單純的問題</s>
+
+//給個小提示，有些東西不只有一個型態</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="708290260370587678" id="message-708290260370587678">
+                <div class="chatlog__content">
+                    <span class="markdown">//鐵槌可以拿來當鐵塊用嗎(笑</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708290303584632862" id="message-708290303584632862">
+                <div class="chatlog__content">
+                    <span class="markdown">//找不到鐵塊也想不到密碼的我</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="708290338770386944" id="message-708290338770386944">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>當然不能……你沒鐵鎚要怎麼打鐵……</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="708290373080055819" id="message-708290373080055819">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>說的也是</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="708290627669983323" id="message-708290627669983323">
+                <div class="chatlog__content">
+                    <span class="markdown">//再給第二個提示，雖然剛才我就提過了，
+但你不覺得地窖有點暗嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="708290691125739630" id="message-708290691125739630">
+                <div class="chatlog__content">
+                    <span class="markdown">//..了解</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708290815142920354" id="message-708290815142920354">
+                <div class="chatlog__content">
+                    <span class="markdown">拿起一根被點燃的篝火上的木材當作火把，再次進入地窖</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="708290951625310279" id="message-708290951625310279">
+                <div class="chatlog__content">
+                    <span class="markdown">//呃…你不用點燃木材……
+篝火是能直接拿走的</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708291056323526736" id="message-708291056323526736">
+                <div class="chatlog__content">
+                    <span class="markdown">你拿走了篝火上的火把進入了地窖中</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708291055774203925/Screenshot_20200508-010350_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708291055774203925/Screenshot_20200508-010350_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708291212821528599" id="message-708291212821528599">
+                <div class="chatlog__content">
+                    <span class="markdown">然後你這時候才終於看清楚地窖的全貌，
+原來在角落還放著一個鐵垃圾桶啊！</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708291212666208276/Screenshot_20200508-200902_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708291212666208276/Screenshot_20200508-200902_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="708291327133089854" id="message-708291327133089854">
+                <div class="chatlog__content">
+                    <span class="markdown">把鐵垃圾桶搬到上面的鐵鉆旁邊去</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="708291757829390410" id="message-708291757829390410">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span> 
+
+在你準備搬起垃圾桶的時候，
+它比你想得還重不少，
+看來裡面除了臭到爆的垃圾之外，
+還放了別的東西，
+也因為這樣垃圾全翻到了你身上，
+
+垃圾那臭死人的味道，噁心的你想吐
+(San Check 0/1)</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708291757825327125/Screenshot_20200508-010442_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708291757825327125/Screenshot_20200508-010442_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="708291792977788998" id="message-708291792977788998">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 68 sc</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="708291792985915414" id="message-708291792985915414">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+1D100 ≦ 68：
+100 → 啊！大失敗！：sc</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="708291822707015781" id="message-708291822707015781">
+                <div class="chatlog__content">
+                    <span class="markdown">//我今天怎麼了..</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="708291835168292887" id="message-708291835168292887">
+                <div class="chatlog__content">
+                    <span class="markdown">//強制-1</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708291962821673021" id="message-708291962821673021">
+                <div class="chatlog__content">
+                    <span class="markdown">然後你從砸在你身上的垃圾中，
+翻到了三個鐵塊</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708291962507100230/Screenshot_20200508-010507_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708291962507100230/Screenshot_20200508-010507_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="708292030731911168" id="message-708292030731911168">
+                <div class="chatlog__content">
+                    <span class="markdown">//還得打磨...</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="708292114693488662" id="message-708292114693488662">
+                <div class="chatlog__content">
+                    <span class="markdown">//鐵砧有全套工具，還有貼心的說明書</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="708292327189250090" id="message-708292327189250090">
+                <div class="chatlog__content">
+                    <span class="markdown">把生鏽的鐵塊跟木材準備好，準備打造可以挖礦石的東西</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="708292431149400144" id="message-708292431149400144">
+                <div class="chatlog__content">
+                    <span class="markdown">那麼你回到了鐵砧旁將三個鐵塊都打磨完畢後，
+終於可以開始製造鐵鍬了</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708292430830764033/Screenshot_20200508-005730_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708292430830764033/Screenshot_20200508-005730_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="708292549982552216" id="message-708292549982552216">
+                <div class="chatlog__content">
+                    <span class="markdown">(製造鐵鍬中</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="708292647374159932" id="message-708292647374159932">
+                <div class="chatlog__content">
+                    <span class="markdown">你獲得了三把還算堪用的鐵鍬</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708292647168507974/Screenshot_20200508-010550_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708292647168507974/Screenshot_20200508-010550_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708292989184638996" id="message-708292989184638996">
+                <div class="chatlog__content">
+                    <span class="markdown">//問題來了，鐵鍬只有三把，礦脈卻有4個，
+請問哪個不能挖呢？</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 08:23 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/d8d25f4b9f94f0702148337392c5f8ed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060" style="color: #E74C3C">刻爾洛斯（機動特遣隊作業員）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="708293136656629821" id="message-708293136656629821">
+                <div class="chatlog__content">
+                    <span class="markdown">//我貌似沒這麼多的提示來著</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="708293145586303026" id="message-708293145586303026">
+                <div class="chatlog__content">
+                    <span class="markdown">//等等，鐵鍬一次挖下來是幾個礦?</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="708293256013807665" id="message-708293256013807665">
+                <div class="chatlog__content">
+                    <span class="markdown">//就整座挖下來</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/d8d25f4b9f94f0702148337392c5f8ed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060" style="color: #E74C3C">刻爾洛斯（機動特遣隊作業員）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="708293442949742606" id="message-708293442949742606">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>被怪物獵人荼毒，以為一次只能一個</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="708293459253133323" id="message-708293459253133323">
+                <div class="chatlog__content">
+                    <span class="markdown">那就挖藍的 紅的 黃的
+//綠的不挖 既不能解除怪物特性又不能打鐵人ouo</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708293491507068929" id="message-708293491507068929">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>我也有這種fu</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="708293738270687242" id="message-708293738270687242">
+                <div class="chatlog__content">
+                    <span class="markdown">你獲得了
+火元素、水元素、土元素結晶各3顆</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708293736794423306/Screenshot_20200508-021256_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708293736794423306/Screenshot_20200508-021256_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708293737360523305/Screenshot_20200508-021234_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708293737360523305/Screenshot_20200508-021234_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708293737972760635/Screenshot_20200508-021134_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708293737972760635/Screenshot_20200508-021134_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="708293998661599263" id="message-708293998661599263">
+                <div class="chatlog__content">
+                    <span class="markdown">走回祭壇，依序放入土元素，水元素，水元素</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294094803435582" id="message-708294094803435582">
+                <div class="chatlog__content">
+                    <span class="markdown">在你將一顆土元素結晶，
+與兩顆水元素水晶放進祭壇的凹槽後，
+祭壇中央的水晶
+立刻放出了一道強烈的白光，
+將鐵傀儡的魔法護罩給消去了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294272188940341" id="message-708294272188940341">
+                <div class="chatlog__content">
+                    <span class="markdown">再依序放入火元素，火元素，水元素
+//可以告訴我為啥這樣變成暗嗎...</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294334759436299" id="message-708294334759436299">
+                <div class="chatlog__content">
+                    <span class="markdown">之後你將兩顆火元素結晶，
+與一顆水元素結晶放上祭壇後，
+
+只見祭壇中央的水晶，
+開始凝聚十分不祥的黑暗氣息，
+接著向著鐵傀儡擊出一發漆黑的光彈，
+直接將鐵傀儡給轟成了碎片，
+只留下了一把大門鑰匙跟四個寶箱在原地</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/d8d25f4b9f94f0702148337392c5f8ed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060" style="color: #E74C3C">刻爾洛斯（機動特遣隊作業員）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294358431957074" id="message-708294358431957074">
+                <div class="chatlog__content">
+                    <span class="markdown">//不用在意這些細節</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294360172855320" id="message-708294360172855320">
+                <div class="chatlog__content">
+                    <span class="markdown"></span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708294360097357824/Screenshot_20200508-021645_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708294360097357824/Screenshot_20200508-021645_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294509854720021" id="message-708294509854720021">
+                <div class="chatlog__content">
+                    <span class="markdown">那就..拿了鑰匙之後翻翻看這四個寶箱吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/d8d25f4b9f94f0702148337392c5f8ed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060" style="color: #E74C3C">刻爾洛斯（機動特遣隊作業員）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294540024348673" id="message-708294540024348673">
+                <div class="chatlog__content">
+                    <span class="markdown">//（笑）</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294684371320832" id="message-708294684371320832">
+                <div class="chatlog__content">
+                    <span class="markdown">然後你發現，沒有鑰匙根本打不開寶箱，
+不過你倒是因為拿到大門鑰匙可以隨便離開這邊了</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 08:30 PM">(edited)</span>
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708294683952021514/Screenshot_20200508-010716_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708294683952021514/Screenshot_20200508-010716_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294791271677973" id="message-708294791271677973">
+                <div class="chatlog__content">
+                    <span class="markdown">回去繼續解密碼鎖好了..</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="708294918719930528" id="message-708294918719930528">
+                <div class="chatlog__content">
+                    <span class="markdown">這是一個六位數密碼鎖的保險箱，
+每個數字只能按一次</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708294918472204318/Screenshot_20200508-005808_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708294918472204318/Screenshot_20200508-005808_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="708295228486058086" id="message-708295228486058086">
+                <div class="chatlog__content">
+                    <span class="markdown">輸入2531</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="708295618367324260" id="message-708295618367324260">
+                <div class="chatlog__content">
+                    <span class="markdown">你發現，密碼鎖還是一樣沒反應，
+不知道是輸入錯誤還是…………？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="708295999042355281" id="message-708295999042355281">
+                <div class="chatlog__content">
+                    <span class="markdown">輸入253....
+//等等這密碼是不是只有三位...</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="708296088779489280" id="message-708296088779489280">
+                <div class="chatlog__content">
+                    <span class="markdown">這是一個&#39;&#39;六位數&#39;&#39;密碼鎖的保險箱，
+每個數字只能按一次</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="708296131687350293" id="message-708296131687350293">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="Untitled3" title="Untitled3" src="https://cdn.discordapp.com/emojis/586182329299632128.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708296416493305936" id="message-708296416493305936">
+                <div class="chatlog__content">
+                    <span class="markdown">//給申請密碼學嗎...?</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="708296510369955880" id="message-708296510369955880">
+                <div class="chatlog__content">
+                    <span class="markdown">//你要對著什麼東西申請密碼學？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="708296560706060288" id="message-708296560706060288">
+                <div class="chatlog__content">
+                    <span class="markdown">//也對...=.=</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708296649361063946" id="message-708296649361063946">
+                <div class="chatlog__content">
+                    <span class="markdown">輸入165342</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708296761730531390" id="message-708296761730531390">
+                <div class="chatlog__content">
+                    <span class="markdown">//诶等等...到底是24還是42...</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="708296851576848445" id="message-708296851576848445">
+                <div class="chatlog__content">
+                    <span class="markdown">保險箱的按鍵彈了開來，
+看來輸入錯誤了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/d8d25f4b9f94f0702148337392c5f8ed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060" style="color: #E74C3C">刻爾洛斯（機動特遣隊作業員）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="708296855058120734" id="message-708296855058120734">
+                <div class="chatlog__content">
+                    <span class="markdown">//…………這傢伙沒救了</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708297013598486589" id="message-708297013598486589">
+                <div class="chatlog__content">
+                    <span class="markdown">//怎麼貌似解謎都一個樣？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297062164463636" id="message-708297062164463636">
+                <div class="chatlog__content">
+                    <span class="markdown">//我不擅長解密碼www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297159274921995" id="message-708297159274921995">
+                <div class="chatlog__content">
+                    <span class="markdown">//我已經笑到快不能自己了www
+//我沒說他不能密碼學，但得要用對地方www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297218175533066" id="message-708297218175533066">
+                <div class="chatlog__content">
+                    <span class="markdown">//我知道 所以我正在思考..</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708297337000427521" id="message-708297337000427521">
+                <div class="chatlog__content">
+                    <span class="markdown">//我想對日記使用密碼學...</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297419628085358" id="message-708297419628085358">
+                <div class="chatlog__content">
+                    <span class="markdown">//終於注意到日記有問題了www
+//骰吧～</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297447591510047" id="message-708297447591510047">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 1 密碼學</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297448488960050" id="message-708297448488960050">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+1D100 ≦ 1：
+22 → 失敗：密碼學</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297483654004825" id="message-708297483654004825">
+                <div class="chatlog__content">
+                    <span class="markdown">//切 果然沒過XDD</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708297591699275856" id="message-708297591699275856">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>一開始我就知道日既有問題 所以才輸入1653</s></span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 08:41 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297697727348818" id="message-708297697727348818">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>可惜你發現的問題不是問題，因為問題不在那</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="708297919031410750" id="message-708297919031410750">
+                <div class="chatlog__content">
+                    <span class="markdown">輸入315624</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708297936299229204" id="message-708297936299229204">
+                <div class="chatlog__content">
+                    <span class="markdown">//我太難了www</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="708298184308293683" id="message-708298184308293683">
+                <div class="chatlog__content">
+                    <span class="markdown">你終於打開了保險箱，
+並從中拿到了一把金色的鑰匙，
+旁邊還有附著一張紙條說明這是啥</span>
+
+                </div>
+
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708298183905771530/Screenshot_20200508-203310_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708298183905771530/Screenshot_20200508-203310_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+                <div class="chatlog__attachment">
+                    <a href="https://cdn.discordapp.com/attachments/708276943539142686/708298184082063491/Screenshot_20200508-015013_Gumballs__DungeonsGD.jpg">
+                        
+                            <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/708276943539142686/708298184082063491/Screenshot_20200508-015013_Gumballs__DungeonsGD.jpg" alt="Attachment" />
+                    </a>
+                </div>
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="708298300708618261" id="message-708298300708618261">
+                <div class="chatlog__content">
+                    <span class="markdown">走到寶箱前面看看能不能用這把鑰匙打開</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="708298547673694218" id="message-708298547673694218">
+                <div class="chatlog__content">
+                    <span class="markdown">你成功地用盜神之鑰打開了寶箱，
+順利的從四個寶箱中A走了
+3萬多枚的純金金幣，
+上面還印著亞瑟王的頭像。
+
+就這樣，你帶著羅傑的寶藏光榮凱旋回家咯～</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708298787843735562" id="message-708298787843735562">
+                <div class="chatlog__content">
+                    <span class="markdown">【通關獎勵結算】
+
+通關 San +2d3
+獲得羅傑的寶藏 信用 +3d5
+閱讀傀儡製作手冊 克蘇魯神話 +1
+獲得 盜神之鑰
+
+
+<div class="pre pre--multiline nohighlight">《盜神之鑰》
+
+這把鑰匙，曾是盜神的隨身物品，
+沒人知道它的來歷，但它依舊舉世聞名，
+是所有盜賊都渴望擁有的東西。
+據說世間沒有什麼鎖是它打不開的！
+
+
+效果：每次劇本中，可以使兩次開鎖判定必定成功</div>
+
+<span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span></span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 08:46 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708298940445098025" id="message-708298940445098025">
+                <div class="chatlog__content">
+                    <span class="markdown">記得還有幸運成長dp喔～</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299055985590304" id="message-708299055985590304">
+                <div class="chatlog__content">
+                    <span class="markdown">.dp 60 試試看幸運有沒有成長吧(笑</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299056308289539" id="message-708299056308289539">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+成長或增強檢定: 試試看幸運有沒有成長吧(笑
+1D100 &gt; 60
+79 → 成功!
+你的技能增加2點!</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299101879402556" id="message-708299101879402556">
+                <div class="chatlog__content">
+                    <span class="markdown">2d3 san</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299102483513344" id="message-708299102483513344">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+2d3：san
+5[3+2] = 5</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299140353753231" id="message-708299140353753231">
+                <div class="chatlog__content">
+                    <span class="markdown">3d5 信用</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 08:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299140773183499" id="message-708299140773183499">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span>
+3d5：信用
+6[1+4+1] = 6</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299225871679498" id="message-708299225871679498">
+                <div class="chatlog__content">
+                    <span class="markdown">//<s>怎麼你跟刻一樣慘，信用都爆炸</s></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/d8d25f4b9f94f0702148337392c5f8ed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060" style="color: #E74C3C">刻爾洛斯（機動特遣隊作業員）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299240534835353" id="message-708299240534835353">
+                <div class="chatlog__content">
+                    <span class="markdown">我想要二次骰的那個……</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299241604513853" id="message-708299241604513853">
+                <div class="chatlog__content">
+                    <span class="markdown">//行 有回到san 也有學生很需要的信用w</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299398357975092" id="message-708299398357975092">
+                <div class="chatlog__content">
+                    <span class="markdown">//然後因為你也讀過了傀儡製作手冊，
+所以也能試著在幻夢境做夢造那鐵傀儡了</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708299475848003604" id="message-708299475848003604">
+                <div class="chatlog__content">
+                    <span class="markdown">//當然，每個人的鐵傀儡價值都不一樣</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299478905389066" id="message-708299478905389066">
+                <div class="chatlog__content">
+                    <span class="markdown">//不過要花很久 看來後日談得宅在夢裡作啊</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299524371775530" id="message-708299524371775530">
+                <div class="chatlog__content">
+                    <span class="markdown">//因為數值會變</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="708299617258963058" id="message-708299617258963058">
+                <div class="chatlog__content">
+                    <span class="markdown">STR：4d6+18
+DEX：3d6
+CON：4d6+9
+POW：3d6+6
+SIZ：3d6+6
+
+<span class="mention" title="八尋 寧寧（小龍蝦萌新）#1103">@被躺椅痛擊的寧寧</span></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299623747420250" id="message-708299623747420250">
+                <div class="chatlog__content">
+                    <span class="markdown">//那我是現在丟嗎?</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299639526260747" id="message-708299639526260747">
+                <div class="chatlog__content">
+                    <span class="markdown">可以</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299644299640883" id="message-708299644299640883">
+                <div class="chatlog__content">
+                    <span class="markdown">//好的～</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463261566675189760/2fbefa8ae5c1f6d634af02c6db7e9547.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="天藍雪球#2553" data-user-id="463261566675189760" style="color: #E74C3C">QB 4號機</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 08:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="708299672149819483" id="message-708299672149819483">
+                <div class="chatlog__content">
+                    <span class="markdown">刻也是昨天丟的</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 197 message(s)</div>
+</div>
+
+</body>
+</html>

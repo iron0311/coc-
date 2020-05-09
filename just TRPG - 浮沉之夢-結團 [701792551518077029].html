@@ -1,0 +1,3820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>just TRPG - 浮沉之夢-結團</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/6c6374bad0b0b6d204d8d6dc4a18d820.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/e8acd7d9bf6207f99350ca9f9e23b168.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/3bdef1251a424500c1b3a78dea9b7e57.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/be0060dafb7a0e31d2a1ca17c0708636.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://discordapp.com/assets/8e12fb4f14d9c4592eb8ec9f22337b04.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    white-space: pre-wrap;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.spoiler {
+    border-radius: 3px;
+}
+
+.quote {
+    margin: 0.5em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment-thumbnail {
+    margin-top: 0.3em;
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/495551793992957962/c984650d4b9013b7083f627f6ac10c40.png" alt="Guild icon" />
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">just TRPG</div>
+        <div class="preamble__entry">浮沉之夢-結團</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+    <div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 09:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="701792985494454272" id="message-701792985494454272">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="701793110816194670" id="message-701793110816194670">
+                <div class="chatlog__content">
+                    <span class="markdown">//決定好要誰來了嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805034563698689" id="message-701805034563698689">
+                <div class="chatlog__content">
+                    <span class="markdown">//永姬</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="701805093682544852" id="message-701805093682544852">
+                <div class="chatlog__content">
+                    <span class="markdown">//他可是戰力角瘋了真的不妙</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805184321585232" id="message-701805184321585232">
+                <div class="chatlog__content">
+                    <span class="markdown">//先提醒你 我也開了一本不用戰鬥的 你拿星田報吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805268450672724" id="message-701805268450672724">
+                <div class="chatlog__content">
+                    <span class="markdown">//你是說你的嗎</span>
+
+                        <span class="chatlog__edited-timestamp" title="20-Apr-20 10:43 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805416216133683" id="message-701805416216133683">
+                <div class="chatlog__content">
+                    <span class="markdown">//摁，多幫你找幾個隊友
+裡面還是有一點扣san，希望隊友幫你踩掉吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/337546755178496000/b38aa1e0073b26f7e49b440ea355abe1.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="夜羽#9035" data-user-id="337546755178496000" style="color: #AE6800">夜羽</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805462932422686" id="message-701805462932422686">
+                <div class="chatlog__content">
+                    <span class="markdown">//場外</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805483882840184" id="message-701805483882840184">
+                <div class="chatlog__content">
+                    <span class="markdown">//場外啊</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805690632667200" id="message-701805690632667200">
+                <div class="chatlog__content">
+                    <span class="markdown">//他的意思是去場外說</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/599251594629873716/fc1f45cff1737a6da9500289ac3db56d.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="八尋 寧寧（小龍蝦萌新）#1103" data-user-id="599251594629873716" style="color: #F1C40F">被躺椅痛擊的寧寧</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="701805734240977017" id="message-701805734240977017">
+                <div class="chatlog__content">
+                    <span class="markdown">//喔喔 好</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="701806179650764893" id="message-701806179650764893">
+                <div class="chatlog__content">
+                    <span class="markdown">// <span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>想什麼時候跑？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="701806290074206359" id="message-701806290074206359">
+                <div class="chatlog__content">
+                    <span class="markdown">//..現在一定不行啦因為絕對會拖到12點以後</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="701806339403415562" id="message-701806339403415562">
+                <div class="chatlog__content">
+                    <span class="markdown">//....嗯....嗯...(思考</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/568013103866839060/d8d25f4b9f94f0702148337392c5f8ed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="刻爾洛斯#4196" data-user-id="568013103866839060" style="color: #E74C3C">刻爾洛斯（機動特遣隊作業員）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="701806472014856292" id="message-701806472014856292">
+                <div class="chatlog__content">
+                    <span class="markdown">//我滿san，但說實在的 他的性格實在不好</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="701806565749031025" id="message-701806565749031025">
+                <div class="chatlog__content">
+                    <span class="markdown">//還是只要我夠厲害能夠一小時解決<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="701806688658915458" id="message-701806688658915458">
+                <div class="chatlog__content">
+                    <span class="markdown">//明天中午可以嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="701806749241311272" id="message-701806749241311272">
+                <div class="chatlog__content">
+                    <span class="markdown">//...不行啊，我在學校欸</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="701806779998273616" id="message-701806779998273616">
+                <div class="chatlog__content">
+                    <span class="markdown">//而且老師會控管手機</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="701806825875570708" id="message-701806825875570708">
+                <div class="chatlog__content">
+                    <span class="markdown">//反正禮拜四絕對有空那</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="701806866484690992" id="message-701806866484690992">
+                <div class="chatlog__content">
+                    <span class="markdown">//如果可以提早我再說</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">20-Apr-20 10:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="701806951151042570" id="message-701806951151042570">
+                <div class="chatlog__content">
+                    <span class="markdown">//好啊，先約禮拜四</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 09:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="707953709170294824" id="message-707953709170294824">
+                <div class="chatlog__content">
+                    <span class="markdown">妳感覺到了潮汐拍打沙子的聲音。感到腳邊有些微涼和濕潤的你緩緩睜開了眼睛。
+然後你發現自己正穿著往日的服裝，赤著腳行走在一片潔白無瑕的沙灘之上。
+在你右側的是深藍而透明的海面， 潮汐時不時地拍打岸邊，如同嬰兒的呼吸一般使人安心。
+在更遠的地方，高邈的穹頂之上— —正懸掛著一輪圓月。月光灑落於海面之上，勾勒出事物的輪廓。</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707953856113279047" id="message-707953856113279047">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 09:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="707954074057703515" id="message-707954074057703515">
+                <div class="chatlog__content">
+                    <span class="markdown">「..................恩...?」永姬醒了過來，就看到自己身在異處</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707954233701302292" id="message-707954233701302292">
+                <div class="chatlog__content">
+                    <span class="markdown">「......诶?等等..我記得我在睡覺..诶诶诶诶诶??」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707954359777886358" id="message-707954359777886358">
+                <div class="chatlog__content">
+                    <span class="markdown">永姬雖然混亂，但是還是看看周圍</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707954585842483310" id="message-707954585842483310">
+                <div class="chatlog__content">
+                    <span class="markdown">//偵查可以ㄇ</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="707954684907880459" id="message-707954684907880459">
+                <div class="chatlog__content">
+                    <span class="markdown">//嗯……這裡可以不用偵察喔</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="707954710367174699" id="message-707954710367174699">
+                <div class="chatlog__content">
+                    <span class="markdown">//喔喔喔喔</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707954780240347176" id="message-707954780240347176">
+                <div class="chatlog__content">
+                    <span class="markdown">「..這是..我以前的衣服..?」.</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707954836842348565" id="message-707954836842348565">
+                <div class="chatlog__content">
+                    <span class="markdown">永姬一邊思考，一邊用手摸海水</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="707955252636286989" id="message-707955252636286989">
+                <div class="chatlog__content">
+                    <span class="markdown">//來自KP的小提醒，不用偵察還是會告訴你看到什麼的，不用太急著做下一步動作</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="707955300526981232" id="message-707955300526981232">
+                <div class="chatlog__content">
+                    <span class="markdown">//喔喔</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:04 PM</span>
+
+            <div class="chatlog__message " data-message-id="707956057112182815" id="message-707956057112182815">
+                <div class="chatlog__content">
+                    <span class="markdown">海水的觸感和現實中無異，從四周的景觀看來這裡什麼東西都沒有，如你所見的。
+但是，你的視野之中突然闖入了一抹突兀的白色。
+那是一名站立在水中，身著白色裙裝，約十二三歲的少女。她就那樣靜靜地看著你，隨後輕輕笑了。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="707956525678723093" id="message-707956525678723093">
+                <div class="chatlog__content">
+                    <span class="markdown">「唔诶诶诶诶诶!?幽靈..還是美人魚..?..那個..你好..?」試著跟對方對話</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707957456294379630" id="message-707957456294379630">
+                <div class="chatlog__content">
+                    <span class="markdown">//????</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="707957539576348742" id="message-707957539576348742">
+                <div class="chatlog__content">
+                    <span class="markdown">「大姐姐妳好，要一起逛逛嗎？」少女在水面上向妳揮手</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="707958160438198323" id="message-707958160438198323">
+                <div class="chatlog__content">
+                    <span class="markdown">「逛逛..?可是我沒辦法像你一樣在水上飄..」永姬傻眼的說着，這一定是夢巴，一定是的</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="707958818411380826" id="message-707958818411380826">
+                <div class="chatlog__content">
+                    <span class="markdown">「放輕鬆就好了。」少女依舊帶著柔和的笑容，
+走到岸邊緩緩拉起妳的雙手，然後挪動小小的步伐往海水走去</span>
+
+                        <span class="chatlog__edited-timestamp" title="07-May-20 10:16 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="707959584840744972" id="message-707959584840744972">
+                <div class="chatlog__content">
+                    <span class="markdown">「..诶..诶诶诶诶??」永姬很莫名其妙...但是身體還是乖乖的跟了上去</span>
+
+                        <span class="chatlog__edited-timestamp" title="07-May-20 10:18 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="707960808071495713" id="message-707960808071495713">
+                <div class="chatlog__content">
+                    <span class="markdown">少女牽起了妳的手，帶著妳走向水中。妳就這樣逐漸被冰涼的海水淹沒。
+正當妳以為自己就要被淹死的時候，卻驚異地發現自己竟然能夠像在陸地上一般呼​​吸。即使是沒有特別學過游泳的妳，也像回到了母親的胎內一般自由自在。 
+月光劈開了深藍而透著絲絲暗沉的海面，妳能夠看到周身游弋著無數透明而散發著奇異光彩的海
+魚兒，在妳們身邊游動著，像極了水面底下的極光。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="707961418326081578" id="message-707961418326081578">
+                <div class="chatlog__content">
+                    <span class="markdown">「...好漂亮...你..你的名字是..?』永姬沒想到能遇到像是童話書一樣的事情</span>
+
+                        <span class="chatlog__edited-timestamp" title="07-May-20 10:26 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="707961801605644371" id="message-707961801605644371">
+                <div class="chatlog__content">
+                    <span class="markdown">「名字……？我就是我呀！名字什麼的，不重要吧。」
+少女還是微笑著</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="707962596917117000" id="message-707962596917117000">
+                <div class="chatlog__content">
+                    <span class="markdown">「...是..是嗎...」永姬感覺對方怪怪的，但還是看著周遭的海中景色</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="707963691290722485" id="message-707963691290722485">
+                <div class="chatlog__content">
+                    <span class="markdown">一瞬間——妳的意識被拉入了一片無盡的黑暗之中。
+再度睜開眼睛，妳發現自己身處於一個類似兒童房的房間，之所以說是兒童房，是因為這 裡擺放著許多小孩子會喜歡的毛絨玩具。
+在毛絨玩具群的正中央，坐著一個正在閱讀什麼書籍，七八歲左右的女孩。
+奇怪的是，本應是每個有孩子的家都會出現的景象，妳卻完全感受不到一絲一毫的溫情與童真。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="707963842466152541" id="message-707963842466152541">
+                <div class="chatlog__content">
+                    <span class="markdown">「...那..那個..?」永姬看著眼前的小孩</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="707964872813576192" id="message-707964872813576192">
+                <div class="chatlog__content">
+                    <span class="markdown">「唔……這個字要怎麼念……呀啊！」
+聽到聲音後突然發現房間裡多出第二人的小女孩小小的叫了一聲。
+此時，妳發現她的臉長得和一開始出現在海邊的少女幾乎一模一樣。
+「大姐姐……是誰？」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="707965187340369961" id="message-707965187340369961">
+                <div class="chatlog__content">
+                    <span class="markdown">「..恩..該怎麼說呢..我叫永姬，你呢?」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="707965500537176094" id="message-707965500537176094">
+                <div class="chatlog__content">
+                    <span class="markdown">「我……沒有名字，爸爸說，病好了以後才會給我名字。」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="707965996740116562" id="message-707965996740116562">
+                <div class="chatlog__content">
+                    <span class="markdown">「...病?小妹妹知道自己得了什麼病嗎?」永姬發現事情不正常，趕緊追問</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="707967219002376214" id="message-707967219002376214">
+                <div class="chatlog__content">
+                    <span class="markdown">「爸爸說，我們兄弟姐妹都得了重病，表現得好的孩子，才能得到治療……」
+停頓了一下，她指著手上的書問妳
+「大姐姐，為什麼這個故事裡的姐姐會拚命的救哥哥們呢？」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="707967662008827955" id="message-707967662008827955">
+                <div class="chatlog__content">
+                    <span class="markdown">「..我看看..?」永姬好奇的看了一下故事書</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="707967750458572883" id="message-707967750458572883">
+                <div class="chatlog__content">
+                    <span class="markdown">//偵察吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="707968374138863740" id="message-707968374138863740">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 44 有點靠悲的偵查</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">07-May-20 10:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="707968374868672592" id="message-707968374868672592">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>
+1D100 ≦ 44：
+64 → 失敗：有點靠悲的偵查</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="707968393587720292" id="message-707968393587720292">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707968421417189457" id="message-707968421417189457">
+                <div class="chatlog__content">
+                    <span class="markdown">//去你的</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 10:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="707969483201052733" id="message-707969483201052733">
+                <div class="chatlog__content">
+                    <span class="markdown">從書中的內容，妳發現這是一本童話故事
+小女孩指的那一頁寫著
+『她在面臨死亡之際，將已經織好的七件蕁麻衣，一件件披在變成天鵝的七位哥哥身上。』</span>
+
+                        <span class="chatlog__edited-timestamp" title="07-May-20 10:58 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707969838600945684" id="message-707969838600945684">
+                <div class="chatlog__content">
+                    <span class="markdown">//嗯……傑力我相信你看過這篇故事……</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="707970083095576686" id="message-707970083095576686">
+                <div class="chatlog__content">
+                    <span class="markdown">//等等我看過但是我忘了..!!</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="707970358271148103" id="message-707970358271148103">
+                <div class="chatlog__content">
+                    <span class="markdown">//看在童話的份上，來靈感一下吧</span>
+
+                        <span class="chatlog__edited-timestamp" title="07-May-20 11:01 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="707970600496529458" id="message-707970600496529458">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 85 就回san本而已不要出差錯</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">07-May-20 11:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="707970601037594774" id="message-707970601037594774">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>
+1D100 ≦ 85：
+46 → 通常成功：就回san本而已不要出差錯</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="707972078246166559" id="message-707972078246166559">
+                <div class="chatlog__content">
+                    <span class="markdown">經過一番思索，妳想起這是著名童話「野天鵝」
+故事大意是在說最小的妹妹為了協助被變成天鵝的哥哥們恢復原形，哪怕無法言語、到陰森的墳地採集蕁麻，甚至是被居民當成女巫，差點遭到火刑，也無怨無悔。
+最終，她順利地幫哥哥們恢復原形，大家過著幸福快樂的日子。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="707972526441103410" id="message-707972526441103410">
+                <div class="chatlog__content">
+                    <span class="markdown">「......因為...這個妹妹覺得哥哥很重要巴..值得他去做這些事情..」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="707972808604647555" id="message-707972808604647555">
+                <div class="chatlog__content">
+                    <span class="markdown">「很重要……？」小女孩將頭微微歪向一旁</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="707973947404320860" id="message-707973947404320860">
+                <div class="chatlog__content">
+                    <span class="markdown">「....應該說他最喜歡哥哥們了，所以才想要救他們」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="707974500322377729" id="message-707974500322377729">
+                <div class="chatlog__content">
+                    <span class="markdown">「最喜歡了……嗎？」
+小女孩低頭陷入沉思，
+這時，妳發現牆上不知何時出現了一道門，好像可以出去的樣子。</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="707974751985074207" id="message-707974751985074207">
+                <div class="chatlog__content">
+                    <span class="markdown">「...小妹妹，你想要有名子嗎?」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707974797111459924" id="message-707974797111459924">
+                <div class="chatlog__content">
+                    <span class="markdown">永姬好奇的問了一下</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="707975315267518474" id="message-707975315267518474">
+                <div class="chatlog__content">
+                    <span class="markdown">「我……沒有想過……但是，挺想要的。」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="707975658461986968" id="message-707975658461986968">
+                <div class="chatlog__content">
+                    <span class="markdown">「..那..要不要我先偷偷給你一個，但是不能跟其他人說喔?」永姬不知道在想什麼，如此問着</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="707976215507501146" id="message-707976215507501146">
+                <div class="chatlog__content">
+                    <span class="markdown">「好啊。」
+小女孩把小小的耳朵湊到妳面前</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="707976703682543616" id="message-707976703682543616">
+                <div class="chatlog__content">
+                    <span class="markdown">「先讓我想想...小妹妹最喜歡什麼?」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="707976863070552144" id="message-707976863070552144">
+                <div class="chatlog__content">
+                    <span class="markdown">「海邊……」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="707977048051810376" id="message-707977048051810376">
+                <div class="chatlog__content">
+                    <span class="markdown">「..恩...那小海如何?」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="707977621811757066" id="message-707977621811757066">
+                <div class="chatlog__content">
+                    <span class="markdown">「小……海，那大姐姐要這樣叫我喔！」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="707977889382924328" id="message-707977889382924328">
+                <div class="chatlog__content">
+                    <span class="markdown">「恩!如果我們能見面!我就叫你小海巴!記得...噓~」永姬很開心能讓一個孩子開心起來，但是還是要對方保密，要是對方的家長生氣對她做了什麼事他會很自責</span>
+
+                        <span class="chatlog__edited-timestamp" title="07-May-20 11:33 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="707978539298717817" id="message-707978539298717817">
+                <div class="chatlog__content">
+                    <span class="markdown">小女孩點了點頭，笑魘如花</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="707978856815919236" id="message-707978856815919236">
+                <div class="chatlog__content">
+                    <span class="markdown">「那我先走瞜~掰掰~」永姬握了對方的手到別之後走像後面的大門離開</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="707979971485892650" id="message-707979971485892650">
+                <div class="chatlog__content">
+                    <span class="markdown">還來不及聽到小海的回應，妳的眼前就出現一個類似手術室的冰冷房間。
+裡面泛著白色的冷光，而在手術台之上躺著的就是雙眼緊閉，前 一秒還在與妳交談的少女。
+在手術台的周圍，有著幾隻頭顱像蘑菇的詭異生物和一名長相與少女相似的中年男子。他們似乎正在交談些什麼。 
+目擊米戈 sc1/1d6</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980387904651265" id="message-707980387904651265">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 42 幹，神話生物!</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">07-May-20 11:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980388613750791" id="message-707980388613750791">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>
+1D100 ≦ 42：
+58 → 失敗：幹，神話生物!</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980402211684403" id="message-707980402211684403">
+                <div class="chatlog__content">
+                    <span class="markdown">1d6</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">07-May-20 11:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980402450497695" id="message-707980402450497695">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>
+1d6：
+5[5] = 5</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980419819110420" id="message-707980419819110420">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="Untitled3" title="Untitled3" src="https://cdn.discordapp.com/emojis/586182329299632128.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980481064337489" id="message-707980481064337489">
+                <div class="chatlog__content">
+                    <span class="markdown">//先別動</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980489419390986" id="message-707980489419390986">
+                <div class="chatlog__content">
+                    <span class="markdown">//幹</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980603106131988" id="message-707980603106131988">
+                <div class="chatlog__content">
+                    <span class="markdown">Cc 90</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">07-May-20 11:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="707980603425030204" id="message-707980603425030204">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="筱玥#2385">@筱月（在混善和中混間亂跑的KP）</span>
+1D100 ≦ 90：
+41 → 困難成功</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:44 PM</span>
+
+            <div class="chatlog__message " data-message-id="707981170775687289" id="message-707981170775687289">
+                <div class="chatlog__content">
+                    <span class="markdown">當妳在瀕臨崩潰邊緣時，妳想到了那如初生花兒般的甜美微笑，心裡的躁動頓時平靜了下來。
+//SAN值依然減5，但不進入任何瘋狂狀態</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="707981365915942972" id="message-707981365915942972">
+                <div class="chatlog__content">
+                    <span class="markdown">//感謝</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707981507356262451" id="message-707981507356262451">
+                <div class="chatlog__content">
+                    <span class="markdown">(該死的這時候說話絕對會被...先聽聽看他們在說什麼好了..)</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="707981580441747457" id="message-707981580441747457">
+                <div class="chatlog__content">
+                    <span class="markdown">//聆聽吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="707981654165028924" id="message-707981654165028924">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 55 比偵查多11</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">07-May-20 11:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="707981654739648643" id="message-707981654739648643">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>
+1D100 ≦ 55：
+85 → 失敗：比偵查多11</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="707981885283762206" id="message-707981885283762206">
+                <div class="chatlog__content">
+                    <span class="markdown">觀察他們</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="707982029093863494" id="message-707982029093863494">
+                <div class="chatlog__content">
+                    <span class="markdown">妳聽到了斷斷續續的聲音「實驗……腦罐……」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707982227132383321" id="message-707982227132383321">
+                <div class="chatlog__content">
+                    <span class="markdown">//(笑)不是每個失敗都不給情報啦（摸頭</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="707982344925085736" id="message-707982344925085736">
+                <div class="chatlog__content">
+                    <span class="markdown">//(被案頭</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:49 PM</span>
+
+            <div class="chatlog__message " data-message-id="707982522713374750" id="message-707982522713374750">
+                <div class="chatlog__content">
+                    <span class="markdown">//觀察……也沒什麼好觀察的，就算了吧</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="707983186893996102" id="message-707983186893996102">
+                <div class="chatlog__content">
+                    <span class="markdown">(腦罐...喂喂喂現在是要上演科幻片了嗎!?可惡..可是這個時候....!!)</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707983357916479550" id="message-707983357916479550">
+                <div class="chatlog__content">
+                    <span class="markdown">鼓起勇氣之後，永姬喊了一聲「你....你們是誰..」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707983519498109069" id="message-707983519498109069">
+                <div class="chatlog__content">
+                    <span class="markdown">//我要被做成腦罐惹<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707983722573463572" id="message-707983722573463572">
+                <div class="chatlog__content">
+                    <span class="markdown">//這時候真的不行就用根本沒練過的加值的武藏刀去打人了<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                        <span class="chatlog__edited-timestamp" title="07-May-20 11:54 PM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="707984571957772409" id="message-707984571957772409">
+                <div class="chatlog__content">
+                    <span class="markdown">沒有人回應妳，包括那些奇怪的生物。
+妳突然感覺一陣眩暈，回過神來，妳回到了一開始的海洋。
+眼前，是眼角微微泛淚，眼眶逐漸紅腫的小海。
+「為什麼……大姐姐要知道真相……直接永遠睡著不好嗎？」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">07-May-20 11:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="707985048430706739" id="message-707985048430706739">
+                <div class="chatlog__content">
+                    <span class="markdown">「...真相....？」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707985140084899931" id="message-707985140084899931">
+                <div class="chatlog__content">
+                    <span class="markdown">永姬知道眼前的小海絕對有秘密，但是...永姬不想傷害他的心</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:04 AM</span>
+
+            <div class="chatlog__message " data-message-id="707986202908819496" id="message-707986202908819496">
+                <div class="chatlog__content">
+                    <span class="markdown">「我已經……不會再醒過來了……我只是個實驗品……在我的夢裡待太久的人……都會死。」
+小海的聲音斷斷續續的
+「可是……我不要永姬姐姐死掉……」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="707986452977418240" id="message-707986452977418240">
+                <div class="chatlog__content">
+                    <span class="markdown">「................是嗎，小海..真是的溫柔的孩子..」知道這個事實的永姬很難冷靜下來..只能用這句話安慰小海</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707986568194818108" id="message-707986568194818108">
+                <div class="chatlog__content">
+                    <span class="markdown">「.....小海希望我離開嗎..？」永姬走過去，摸著對方的頭</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:13 AM</span>
+
+            <div class="chatlog__message " data-message-id="707988491128274954" id="message-707988491128274954">
+                <div class="chatlog__content">
+                    <span class="markdown">小海將整顆小腦袋直接埋進妳懷裡，點了點頭。
+「游回沙灘上，就能醒過來了。」
+說到一半，她已經泣不成聲。
+「如果可以的話……我也想。我想做一個普通的女孩子……然後上學。
+和朋友一 起出去玩，傷心的時候可以盡情哭泣，開心的時候可以開懷大笑。可以邂逅喜歡 的人，也可以一個人活得很瀟灑。
+我也想擁有正常的家庭，也想……認真愛著他 們。但是這些都已經不可能了。………………但是。」
+「我不後悔認識你，永姬姐姐。」</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 12:13 AM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:15 AM</span>
+
+            <div class="chatlog__message " data-message-id="707988962882617415" id="message-707988962882617415">
+                <div class="chatlog__content">
+                    <span class="markdown">「.............................小海..」永姬看著在自己胸中的小孩，心痛不止，難道就沒有拯救他的方法了嗎</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707989075587498086" id="message-707989075587498086">
+                <div class="chatlog__content">
+                    <span class="markdown">(拜託了...)永姬四處張望，看有沒有奇蹟..能夠帶兩人出去的奇蹟發生</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:17 AM</span>
+
+            <div class="chatlog__message " data-message-id="707989572189159424" id="message-707989572189159424">
+                <div class="chatlog__content">
+                    <span class="markdown">四周沒有任何迴響</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:18 AM</span>
+
+            <div class="chatlog__message " data-message-id="707989623485366292" id="message-707989623485366292">
+                <div class="chatlog__content">
+                    <span class="markdown">(.......可惡......)</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707989742989606953" id="message-707989742989606953">
+                <div class="chatlog__content">
+                    <span class="markdown">「..........小海...你有沒有自己嘗試過到岸上？」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707989903966732290" id="message-707989903966732290">
+                <div class="chatlog__content">
+                    <span class="markdown">永姬知道自己時間不多，所以如果真的不行....只能丟下他了，但是在那之前，永姬想要能找到方法</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="707990038687907920" id="message-707990038687907920">
+                <div class="chatlog__content">
+                    <span class="markdown">「我……到岸上也醒不過來……」</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:20 AM</span>
+
+            <div class="chatlog__message " data-message-id="707990153884336138" id="message-707990153884336138">
+                <div class="chatlog__content">
+                    <span class="markdown">「..那..至少..小海能送我離開嗎..？」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707990284805603358" id="message-707990284805603358">
+                <div class="chatlog__content">
+                    <span class="markdown">永姬強忍住自己快要掉出來的眼淚，握著小海的手</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:21 AM</span>
+
+            <div class="chatlog__message " data-message-id="707990597226594324" id="message-707990597226594324">
+                <div class="chatlog__content">
+                    <span class="markdown">「嗯……」
+小海就這麼被你拉著手，跟著妳準備往岸上走去</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="707990672803889172" id="message-707990672803889172">
+                <div class="chatlog__content">
+                    <span class="markdown">「謝謝你......我也很高興認識你..我...不會忘記你的..」</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707990711785619578" id="message-707990711785619578">
+                <div class="chatlog__content">
+                    <span class="markdown">永姬就這麼跟小海走回岸上</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="707990996780187678" id="message-707990996780187678">
+                <div class="chatlog__content">
+                    <span class="markdown">//過幸運</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="707991746805760060" id="message-707991746805760060">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 26 幸運</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 12:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="707991747304882277" id="message-707991747304882277">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>
+1D100 ≦ 26：
+87 → 失敗：幸運</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="707991761691213826" id="message-707991761691213826">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="Untitled3" title="Untitled3" src="https://cdn.discordapp.com/emojis/586182329299632128.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707991798370533536" id="message-707991798370533536">
+                <div class="chatlog__content">
+                    <span class="markdown">//我...被圓神嘲諷了..？</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 12:26 AM">(edited)</span>
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707991810387083305" id="message-707991810387083305">
+                <div class="chatlog__content">
+                    <span class="markdown">//我..？</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 12:26 AM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="707991816754036817" id="message-707991816754036817">
+                <div class="chatlog__content">
+                    <span class="markdown">//你幸運不是45嗎？</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="707991874874507355" id="message-707991874874507355">
+                <div class="chatlog__content">
+                    <span class="markdown">//？欸</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707991892998226073" id="message-707991892998226073">
+                <div class="chatlog__content">
+                    <span class="markdown">好喔，那我重骰</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="707991972173840396" id="message-707991972173840396">
+                <div class="chatlog__content">
+                    <span class="markdown">//等等</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="707992021679210567" id="message-707992021679210567">
+                <div class="chatlog__content">
+                    <span class="markdown">//(慌張</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="707992046652358836" id="message-707992046652358836">
+                <div class="chatlog__content">
+                    <span class="markdown">//不好意思，看錯格了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="707992067921543266" id="message-707992067921543266">
+                <div class="chatlog__content">
+                    <span class="markdown">//</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707992076884770919" id="message-707992076884770919">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="Untitled3" title="Untitled3" src="https://cdn.discordapp.com/emojis/586182329299632128.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707992095230656562" id="message-707992095230656562">
+                <div class="chatlog__content">
+                    <span class="markdown">//玩弄我</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="707992132450910270" id="message-707992132450910270">
+                <div class="chatlog__content">
+                    <span class="markdown">cc 25</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 12:27 AM</span>
+
+            <div class="chatlog__message " data-message-id="707992132761157754" id="message-707992132761157754">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="筱玥#2385">@筱月（在混善和中混間亂跑的KP）</span>
+1D100 ≦ 25：
+82 → 失敗</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:28 AM</span>
+
+            <div class="chatlog__message " data-message-id="707992165048909918" id="message-707992165048909918">
+                <div class="chatlog__content">
+                    <span class="markdown">//how dare you</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:32 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993228670009435" id="message-707993228670009435">
+                <div class="chatlog__content">
+                    <span class="markdown">妳的意識再一次遠去。 睜開眼睛，妳發現自己正躺在家中的床上。枕頭被什麼東西打濕，自己似乎忘記了什 麼……但是想不起來了。是做了夢嗎？ 夢遲早會遺忘掉的。妳這麼想著，跑到桌前拿出紙和筆來，試圖憑藉殘存的印象來記錄這個 夢。 
+然而妳無法寫下任何東西。有什麼很美好而又悲傷的東西充斥著妳的內心。
+ 記憶如同潮水一般急速散去。 妳回到了日常生活之中。
+妳究竟夢到了什麼，看來只有在死亡前的迴光返照能一探究竟吧。
+
+NE 達成</span>
+
+                        <span class="chatlog__edited-timestamp" title="08-May-20 12:32 AM">(edited)</span>
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:33 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993560418484305" id="message-707993560418484305">
+                <div class="chatlog__content">
+                    <span class="markdown">//小海啊啊啊啊啊啊啊(哭</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707993601761738825" id="message-707993601761738825">
+                <div class="chatlog__content">
+                    <span class="markdown">//我現在確定了一件事情</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707993720099831919" id="message-707993720099831919">
+                <div class="chatlog__content">
+                    <span class="markdown">//我創造永姬最後悔的事，就是讓他跑三原色的時候燒幸運去打死拜亞基</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:34 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993767524696085" id="message-707993767524696085">
+                <div class="chatlog__content">
+                    <span class="markdown">SAN值恢復 2d10+8
+撕卡時得以回到記憶之海，和小海再次見面</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:34 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993770842652742" id="message-707993770842652742">
+                <div class="chatlog__content">
+                    <span class="markdown">//(眼神死</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707993854078615633" id="message-707993854078615633">
+                <div class="chatlog__content">
+                    <span class="markdown">(等等是說我還是有機會帶小海出來嗎</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707993862747979835" id="message-707993862747979835">
+                <div class="chatlog__content">
+                    <span class="markdown"><img class="emoji emoji--large" alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993902610776185" id="message-707993902610776185">
+                <div class="chatlog__content">
+                    <span class="markdown">//不，沒有</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993911259562128" id="message-707993911259562128">
+                <div class="chatlog__content">
+                    <span class="markdown">2d10+8</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/544462904037081138/826b76664e4c68ff4d29076c48a02bed.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="HKTRPG#4989" data-user-id="544462904037081138" style="color: #3498DB">圓神大大</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">08-May-20 12:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993911859085413" id="message-707993911859085413">
+                <div class="chatlog__content">
+                    <span class="markdown"><span class="mention" title="紅色老鼠傑力#7068">@穿上恐龍皮的老鼠</span>
+2d10+8：
+11[4+7]+8 = 19</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="707993942372778096" id="message-707993942372778096">
+                <div class="chatlog__content">
+                    <span class="markdown">嗚嗚嗚好難過喔</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707993981665017948" id="message-707993981665017948">
+                <div class="chatlog__content">
+                    <span class="markdown">(好像也沒回多少..</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:35 AM</span>
+
+            <div class="chatlog__message " data-message-id="707994128172056638" id="message-707994128172056638">
+                <div class="chatlog__content">
+                    <span class="markdown">//你去問其他人，加14多不多</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:36 AM</span>
+
+            <div class="chatlog__message " data-message-id="707994291787661341" id="message-707994291787661341">
+                <div class="chatlog__content">
+                    <span class="markdown">//不過聽起來就很多，應為要是是遇到神話生物等級的才會狂扣</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707994347601133690" id="message-707994347601133690">
+                <div class="chatlog__content">
+                    <span class="markdown">好了，那帶小海出去會發生什麼事</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707995378338889859" id="message-707995378338889859">
+                <div class="chatlog__content">
+                    <span class="markdown">我可以像fu 一樣多一個女兒(妹妹)嗎<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:41 AM</span>
+
+            <div class="chatlog__message " data-message-id="707995531586306163" id="message-707995531586306163">
+                <div class="chatlog__content">
+                    <span class="markdown">//小海怎麼樣都帶不出去……最好的結局應該是她和你的意識融為一體，你多了一個在夢中才能見面的妹妹</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:41 AM</span>
+
+            <div class="chatlog__message " data-message-id="707995627430346793" id="message-707995627430346793">
+                <div class="chatlog__content">
+                    <span class="markdown">//做夢才會見到的妹妹...<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707995651991928875" id="message-707995651991928875">
+                <div class="chatlog__content">
+                    <span class="markdown">//好蚌</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707995784896970852" id="message-707995784896970852">
+                <div class="chatlog__content">
+                    <span class="markdown">//(可惡，那個拜亞基，下次我要是再遇見拜亞基不管是武藏的刀還是魔法弓我全都用..</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707995890123800768" id="message-707995890123800768">
+                <div class="chatlog__content">
+                    <span class="markdown">//(都是拜亞基害我變成現在這個樣子..我還少一個夢裡妹妹..幹</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707995978053189693" id="message-707995978053189693">
+                <div class="chatlog__content">
+                    <span class="markdown">然後如果ge會多什麼獎勵</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707996050845073490" id="message-707996050845073490">
+                <div class="chatlog__content">
+                    <span class="markdown">//一個妹妹(幹</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="707996237009256510" id="message-707996237009256510">
+                <div class="chatlog__content">
+                    <span class="markdown">//恢復變成2d10+2d6
+意志+10、夢中多了小海妹妹</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:44 AM</span>
+
+            <div class="chatlog__message " data-message-id="707996326742458379" id="message-707996326742458379">
+                <div class="chatlog__content">
+                    <span class="markdown">好多..</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707996374251339786" id="message-707996374251339786">
+                <div class="chatlog__content">
+                    <span class="markdown">然後..小海不想讓我死掉的關鍵點是..？</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707996402629869700" id="message-707996402629869700">
+                <div class="chatlog__content">
+                    <span class="markdown">(我給他取名字嗎</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:45 AM</span>
+
+            <div class="chatlog__message " data-message-id="707996474532691998" id="message-707996474532691998">
+                <div class="chatlog__content">
+                    <span class="markdown">//她本來就是個好孩子</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:45 AM</span>
+
+            <div class="chatlog__message " data-message-id="707996536709185567" id="message-707996536709185567">
+                <div class="chatlog__content">
+                    <span class="markdown">他是被做甚麼實驗</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707996569642991746" id="message-707996569642991746">
+                <div class="chatlog__content">
+                    <span class="markdown">(還是劇本沒有明講</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:45 AM</span>
+
+            <div class="chatlog__message " data-message-id="707996664509628449" id="message-707996664509628449">
+                <div class="chatlog__content">
+                    <span class="markdown">//腦罐實驗，變相的大腦移植</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707996894890033163" id="message-707996894890033163">
+                <div class="chatlog__content">
+                    <span class="markdown">//具體形容就是把大腦泡在福馬林裡面</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:46 AM</span>
+
+            <div class="chatlog__message " data-message-id="707996903723237396" id="message-707996903723237396">
+                <div class="chatlog__content">
+                    <span class="markdown">//小海是被移植的還是移植給其他人的</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707996955359576095" id="message-707996955359576095">
+                <div class="chatlog__content">
+                    <span class="markdown">//(幹超在意小海的變態</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:48 AM</span>
+
+            <div class="chatlog__message " data-message-id="707997267252084806" id="message-707997267252084806">
+                <div class="chatlog__content">
+                    <span class="markdown">//沒有移植，就是把大腦獨立出來，作為意識同步系統的一部分</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:48 AM</span>
+
+            <div class="chatlog__message " data-message-id="707997367294492682" id="message-707997367294492682">
+                <div class="chatlog__content">
+                    <span class="markdown">喔</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707997438639865978" id="message-707997438639865978">
+                <div class="chatlog__content">
+                    <span class="markdown">//我跑到小海夢境的原因？</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707997455656026181" id="message-707997455656026181">
+                <div class="chatlog__content">
+                    <span class="markdown">最後的問題</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707997506914746470" id="message-707997506914746470">
+                <div class="chatlog__content">
+                    <span class="markdown">(我等等要看能不能夢到小海<img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /> <img class="emoji " alt="a10198441d88c857" title="a10198441d88c857" src="https://cdn.discordapp.com/emojis/586182326653026321.png" /></span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="707997519577350145" id="message-707997519577350145">
+                <div class="chatlog__content">
+                    <span class="markdown">//剛好腦電波同步到了</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:49 AM</span>
+
+            <div class="chatlog__message " data-message-id="707997607754072074" id="message-707997607754072074">
+                <div class="chatlog__content">
+                    <span class="markdown">好惹晚安(準備見小海去</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="707997803628069005" id="message-707997803628069005">
+                <div class="chatlog__content">
+                    <span class="markdown">//你是直接無視死亡前才能見到小海的設定了嗎……</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/659395804389310465/f64c274329a979c9d1de10e835efc937.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="紅色老鼠傑力#7068" data-user-id="659395804389310465" style="color: #E74C3C">穿上恐龍皮的老鼠</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="707997872427237448" id="message-707997872427237448">
+                <div class="chatlog__content">
+                    <span class="markdown">//rrrrrno</span>
+
+                </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="707997912826773546" id="message-707997912826773546">
+                <div class="chatlog__content">
+                    <span class="markdown">好啦，晚安(認真</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/478444457675718656/5929efcf9a54dd0ed43dd17142865a73.png" alt="Avatar" />
+    </div>
+    <div class="chatlog__messages">
+    <span class="chatlog__author-name" title="筱玥#2385" data-user-id="478444457675718656" style="color: #E74C3C">筱月（在混善和中混間亂跑的KP）</span>
+
+
+        <span class="chatlog__timestamp">08-May-20 12:51 AM</span>
+
+            <div class="chatlog__message " data-message-id="707997942283370547" id="message-707997942283370547">
+                <div class="chatlog__content">
+                    <span class="markdown">//晚安</span>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 189 message(s)</div>
+</div>
+
+</body>
+</html>
